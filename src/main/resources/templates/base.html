@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html
+  class="light"
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
   th:fragment="parent(content, title)"
@@ -14,12 +15,12 @@
     />
     <title th:text="${title}">Base Page</title>
   </head>
-  <body>
+  <body class="dark:bg-gray-800 dark:text-white bg-black">
     <!--common header-->
     <div data-th-replace="navbar :: navbar"></div>
     <div>
       <p>Base Page Content</p>
-      <section th:replace="${content}"></section>
+      <section class="p-4 h-screen w-full" th:replace="${content}"></section>
     </div>
 
     <!--common footer-->
