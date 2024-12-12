@@ -1,4 +1,4 @@
-<nav th:fragment="navbar" class="bg-slate-800 border-gray-200 dark:bg-gray-900">
+<nav th:fragment="navbar" class=" border-gray-200 dark:bg-gray-900">
   <div
     class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
   >
@@ -12,12 +12,52 @@
         alt="ContactHive Logo"
       />
       <span
-        class="self-center text-2xl font-bold pb-1 whitespace-nowrap dark:text-white "
+        class="self-center text-2xl font-bold pb-1 whitespace-nowrap dark:text-white"
       >
         ContactHive
       </span>
     </a>
-    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+    <div
+      class="flex md:order-2 space-x-3 gap-4 md:space-x-0 rtl:space-x-reverse"
+    >
+      <div>
+        <button
+          x-on:click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode)"
+          class="bg-gray-200 dark:bg-gray-600 p-2 rounded-full focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x-show="!darkMode"
+            class="w-6 h-6 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="scale: 0.9; transform-origin: 50% 50%;"
+              stroke-width="2.2"
+              d="M7.1597 6.38858L4.89251 3.29171M4.1684 10.4747L0.5 9.29179M4.1684 15.5253L0.5 16.7082M7.1597 19.6114L4.89251 22.7083M12 21.1721V25M16.8403 19.6114L19.1075 22.7083M19.8316 15.5253L23.5 16.7082M19.8316 10.4747L23.5 9.29179M16.8403 6.38858L19.1075 3.29171M12 4.82795V1M17.608 13C17.608 16.0737 15.0972 18.5655 12 18.5655C8.90281 18.5655 6.39205 16.0737 6.39205 13C6.39205 9.92628 8.90281 7.43455 12 7.43455C15.0972 7.43455 17.608 9.92628 17.608 13Z"
+            />
+          </svg>
+
+          <svg
+            x-show="darkMode"
+            class="w-6 h-6 text-gray-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        </button>
+      </div>
       <a
         data-th-href="@{/register}"
         type="button"

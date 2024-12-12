@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "build": "npx tailwindcss -i src/main/resources/static/css/input.css -o src/main/resources/static/css/input.css --watch"
+
   },
   "keywords": [],
   "author": "",
@@ -12,5 +14,10 @@
   "description": "",
   "devDependencies": {
     "tailwindcss": "^3.4.16"
+  },
+  "dependencies": {
+    "tailgrids": "^2.2.7"
   }
 }
+
+
