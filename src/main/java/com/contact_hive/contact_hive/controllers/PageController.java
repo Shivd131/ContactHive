@@ -26,4 +26,22 @@ public class PageController {
         model.addAttribute("name", "This is services");
         return "services";
     }
+
+    @GetMapping("/contact")
+    public String contactPage(Model model ) {
+        model.addAttribute("name", "This is contact");
+        return "contact";
+    }
+
+    @GetMapping("/login")
+    public String loginPage(Model model) {
+        model.addAttribute("name", "This is login");
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String registerPage(Model model) {
+        model.addAttribute("name", "This is register");
+        return "register";
+    }
 }
