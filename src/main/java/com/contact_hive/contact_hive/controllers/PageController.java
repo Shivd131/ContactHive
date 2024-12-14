@@ -64,15 +64,13 @@ public class PageController {
         // Add attributes to the model if needed (e.g., success message)
         model.addAttribute("success", "Registration successful!");
 
-        // UserForm -> User
-        User user = User.builder()
-                .name(userForm.getName())
-                .email(userForm.getEmail())
-                .password(userForm.getPassword())
-                .about(userForm.getAbout())
-                .phoneNumber(userForm.getPhoneNumber())
-                .profilePic("https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg")
-                .build();
+        User user = new User();
+        user.setName(userForm.getName());
+        user.setEmail(userForm.getEmail());
+        user.setPassword(userForm.getPassword());
+        user.setAbout(userForm.getAbout());
+        user.setPhoneNumber(userForm.getPhoneNumber());
+        user.setProfilePic("https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg");
 
         User savedUser = userService.saveUser(user);
         System.out.println(savedUser);
