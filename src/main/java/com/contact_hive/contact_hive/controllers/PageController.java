@@ -1,15 +1,20 @@
 package com.contact_hive.contact_hive.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.contact_hive.contact_hive.entities.User;
 import com.contact_hive.contact_hive.forms.UserForm;
+import com.contact_hive.contact_hive.services.UserService;
 
 @Controller
 public class PageController {
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/home")
     public String homePage(Model model) {
@@ -53,12 +58,24 @@ public class PageController {
     @PostMapping("/register")
     public String registerPagePost(@ModelAttribute UserForm userForm, Model model) {
         System.out.println("Register page post method called");
-        //fetch form data
+        // fetch form data
         System.out.println(userForm);
-        
+
         // Add attributes to the model if needed (e.g., success message)
         model.addAttribute("success", "Registration successful!");
 
+        // UserForm -> User
+        User user = User.builder()
+                .name(userForm.getName())
+                .email(userForm.getEmail())
+                .password(userForm.getPassword())
+                .about(userForm.getAbout())
+                .phoneNumber(userForm.getPhoneNumber())
+                .profilePic("https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg")
+                .build();
+
+        User savedUser = userService.saveUser(user);
+        System.out.println(savedUser);
         // Render the register page again
         return "register";
     }
