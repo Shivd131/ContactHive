@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.contact_hive.contact_hive.entities.User;
 import com.contact_hive.contact_hive.forms.UserForm;
+import com.contact_hive.contact_hive.helpers.Message;
+import com.contact_hive.contact_hive.helpers.MessageType;
 import com.contact_hive.contact_hive.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class PageController {
@@ -56,13 +60,10 @@ public class PageController {
     }
 
     @PostMapping("/register")
-    public String registerPagePost(@ModelAttribute UserForm userForm, Model model) {
+    public String registerPagePost(@ModelAttribute UserForm userForm, HttpSession session) {
         System.out.println("Register page post method called");
         // fetch form data
         System.out.println(userForm);
-
-        // Add attributes to the model if needed (e.g., success message)
-        model.addAttribute("success", "Registration successful!");
 
         User user = new User();
         user.setName(userForm.getName());
@@ -71,11 +72,14 @@ public class PageController {
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
         user.setProfilePic("https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg");
-
+        session.setAttribute("message", "registration successful");
         User savedUser = userService.saveUser(user);
         System.out.println(savedUser);
+        Message message = Message.builder().content("Registration successful").type(MessageType.green).build();
+        session.setAttribute("message", message);
+
         // Render the register page again
-        return "register";
+        return "redirect:/register";
     }
 
 }
