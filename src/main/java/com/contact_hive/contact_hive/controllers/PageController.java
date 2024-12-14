@@ -3,6 +3,7 @@ package com.contact_hive.contact_hive.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.contact_hive.contact_hive.helpers.MessageType;
 import com.contact_hive.contact_hive.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class PageController {
@@ -60,11 +62,16 @@ public class PageController {
     }
 
     @PostMapping("/register")
-    public String registerPagePost(@ModelAttribute UserForm userForm, HttpSession session) {
+    public String registerPagePost(@Valid @ModelAttribute UserForm userForm, BindingResult rBindingResult,
+            HttpSession session) {
         System.out.println("Register page post method called");
         // fetch form data
         System.out.println(userForm);
-
+        // validate form data
+        if (rBindingResult.hasErrors()) {
+            System.out.println("Binding result has errors");
+            return "register";
+        }
         User user = new User();
         user.setName(userForm.getName());
         user.setEmail(userForm.getEmail());
