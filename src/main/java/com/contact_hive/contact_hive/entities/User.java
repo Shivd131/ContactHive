@@ -55,4 +55,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)  
     private List<Contact> contacts = new ArrayList<>();
+
+    public static Object withUsername(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'withUsername'");
+    }
 }
