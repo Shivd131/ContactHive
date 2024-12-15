@@ -8,31 +8,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
-    //user dashboard page
+    // user dashboard page
     @GetMapping("/dashboard")
     public String dashboard() {
         return "user/dashboard";
     }
-    
-    //user add contacts page
+
+    @GetMapping("/profile")
+    public String profile() {
+        return "user/profile";
+    }
+
+    // user add contacts page
     @RequestMapping("/add-contacts")
     public String addContacts() {
         return "user/add-contacts";
     }
 
-    //user view contacts page
+    // user view contacts page
     @RequestMapping("/view-contacts")
     public String viewContacts() {
         return "user/view-contacts";
     }
 
-    //user edit contact page
+    // user edit contact page
     @RequestMapping("/edit-contact")
     public String editContact() {
         return "user/edit-contact";
     }
 
-    //user delete contact page
+    // user delete contact page
     @RequestMapping("/delete-contact")
     public String deleteContact() {
         return "user/delete-contact";

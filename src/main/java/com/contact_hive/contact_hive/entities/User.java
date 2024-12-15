@@ -19,6 +19,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -51,7 +52,7 @@ public class User implements UserDetails {
 
     private String phoneNumber;
 
-    private boolean enabled = false;
+    private boolean enabled = true;
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
@@ -73,9 +74,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Collection<SimpleGrantedAuthority> roles = (Collection<SimpleGrantedAuthority>) roleList.stream()
-                .map(role -> new SimpleGrantedAuthority(role));
-        return roles;
+        return roleList.stream()
+                .map(SimpleGrantedAuthority::new) // Create SimpleGrantedAuthority for each role
+                .collect(Collectors.toList()); // Collect into a List
     }
 
     @Override
