@@ -14,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 // import org.springframework.security.core.userdetails.UserDetailsService;
@@ -74,21 +75,28 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-            .authorizeHttpRequests(authorize -> {
-                authorize.requestMatchers("/css/**", "/js/**", "/images/**", "/static/**").permitAll();
-                authorize.requestMatchers("/", "/home", "/login", "/register").permitAll();
-                authorize.requestMatchers("/user/**").authenticated();
-                authorize.anyRequest().permitAll();
-            })
-            .formLogin(formLogin -> {
-                formLogin.loginPage("/login")
-                        .loginProcessingUrl("/authenticate")
-                        .defaultSuccessUrl("/user/dashboard", true)
-                        .failureUrl("/login?error=true")
-                        .usernameParameter("email")
-                        .passwordParameter("password")
-                        .permitAll();
-            });
+                .authorizeHttpRequests(authorize -> {
+                    authorize.requestMatchers("/css/**", "/js/**", "/images/**", "/static/**").permitAll();
+                    authorize.requestMatchers("/", "/home", "/login", "/register").permitAll();
+                    authorize.requestMatchers("/user/**").authenticated();
+                    authorize.anyRequest().permitAll();
+                })
+                .formLogin(formLogin -> {
+                    formLogin.loginPage("/login")
+                            .loginProcessingUrl("/authenticate")
+                            .defaultSuccessUrl("/user/dashboard", true)
+                            // .failureUrl("/login?error=true")
+                            .usernameParameter("email")
+                            .passwordParameter("password")
+                            .permitAll();
+                });
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
+        httpSecurity.logout(logoutForm -> {
+            logoutForm.logoutUrl("/logout")
+                    .logoutSuccessUrl("/login")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID");
+        });
 
         return httpSecurity.build();
     }

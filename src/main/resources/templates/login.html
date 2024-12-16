@@ -22,8 +22,15 @@
             <p class="font-thin text-sm text-gray-500 dark:text-gray-400">
               Start managing your contacts on the cloud with ContactHive.
             </p>
-            <form th:action="@{/authenticate}" method="post" class="mt-5" novalidate>
+            <form
+              th:action="@{/authenticate}"
+              method="post"
+              class="mt-5"
+              novalidate
+            >
               <div class="mb-5">
+                <div class="text-red-600 mb-3" th:if="${param.error}">Invalid username or password</div>
+                <div class="text-green-600 mb-3" th:if="${param. logout}">You have been logged out</div>
                 <label
                   for="email"
                   class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
