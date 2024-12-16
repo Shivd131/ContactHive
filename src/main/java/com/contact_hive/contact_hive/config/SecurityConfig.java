@@ -73,45 +73,23 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeHttpRequests(authorize -> {
-            // authorize.requestMatchers("/home", "/about", "/services", "/contact",
-            // "/register").permitAll();
-            authorize.requestMatchers("/user/**").authenticated();
-            authorize.anyRequest().permitAll();
-        });
+        httpSecurity
+            .authorizeHttpRequests(authorize -> {
+                authorize.requestMatchers("/css/**", "/js/**", "/images/**", "/static/**").permitAll();
+                authorize.requestMatchers("/", "/home", "/login", "/register").permitAll();
+                authorize.requestMatchers("/user/**").authenticated();
+                authorize.anyRequest().permitAll();
+            })
+            .formLogin(formLogin -> {
+                formLogin.loginPage("/login")
+                        .loginProcessingUrl("/authenticate")
+                        .defaultSuccessUrl("/user/dashboard", true)
+                        .failureUrl("/login?error=true")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        .permitAll();
+            });
 
-        httpSecurity.formLogin(formLogin -> {
-            formLogin.loginPage("/login")
-                    .loginProcessingUrl("/authenticate")
-                    .successForwardUrl("/user/dashboard")
-                    .failureForwardUrl("/login?error=true")
-                    .usernameParameter("email")
-                    .passwordParameter("password");
-            // .failureHandler(new AuthenticationFailureHandler() {
-
-            // @Override
-            // public void onAuthenticationFailure(HttpServletRequest request,
-            // HttpServletResponse response,
-            // AuthenticationException exception) throws IOException, ServletException {
-            // // TODO Auto-generated method stub
-            // throw new UnsupportedOperationException("Unimplemented method
-            // 'onAuthenticationFailure'");
-            // }
-
-            // })
-            // .successHandler(new AuthenticationSuccessHandler() {
-
-            // @Override
-            // public void onAuthenticationSuccess(HttpServletRequest request,
-            // HttpServletResponse response,
-            // Authentication authentication) throws IOException, ServletException {
-            // // TODO Auto-generated method stub
-            // throw new UnsupportedOperationException("Unimplemented method
-            // 'onAuthenticationSuccess'");
-            // }
-
-            // });
-        });
         return httpSecurity.build();
     }
 
