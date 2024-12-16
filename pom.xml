@@ -82,6 +82,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
    		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+<!-- 	1. OAuth2 > Add OAuth2 client starter dependency.
+		2. google->
+			a. client id
+			b. client secret
+		3. Add the oauth login configuration :
+		4. login page /login and successhandler
+		5. in your success handler you are getting data ... save kare sakte hai data based on provider information -->
 	</dependencies>
 
 	<build>
