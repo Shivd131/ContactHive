@@ -87,7 +87,6 @@ public class SecurityConfig {
                     formLogin.loginPage("/login")
                             .loginProcessingUrl("/authenticate")
                             .defaultSuccessUrl("/user/dashboard", true)
-                            // .failureUrl("/login?error=true")
                             .usernameParameter("email")
                             .passwordParameter("password")
                             .permitAll();
@@ -96,8 +95,6 @@ public class SecurityConfig {
         httpSecurity.logout(logoutForm -> {
             logoutForm.logoutUrl("/logout")
                     .logoutSuccessUrl("/login");
-            // .invalidateHttpSession(true)
-            // .deleteCookies("JSESSIONID");
         });
 
         // oauth configs

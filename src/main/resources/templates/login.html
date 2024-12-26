@@ -88,10 +88,10 @@
                 Reset form
               </button>
             </form>
-            <div class="oauth-buttons flex justify-center mt-5">
+            <div class="oauth-buttons flex flex-col gap-4 items-center justify-center mt-5">
               <a
                 data-th-href="@{/oauth2/authorization/google}"
-                class="gsi-material-button bg-gray-200 rounded-2xl flex items-center justify-center px-3 py-2 h-10 text-gray-800 text-sm font-medium cursor-pointer transition-all duration-218 ease-in-out focus:outline-none relative overflow-hidden max-w-[400px] min-w-[min-content]"
+                class="w-9/12 gsi-material-button bg-gray-200 rounded-2xl flex items-center justify-center px-3 py-2 h-10 text-gray-800 text-sm font-medium cursor-pointer transition-all duration-218 ease-in-out focus:outline-none relative overflow-hidden max-w-[400px] min-w-[min-content]"
               >
                 <div
                   class="gsi-material-button-state absolute inset-0 bg-[#001d35] opacity-0 transition-opacity duration-218"
@@ -126,6 +126,26 @@
                   </div>
                   <span class="gsi-material-button-contents flex-1 text-center"
                     >Continue with Google</span
+                  >
+                  <span class="hidden">Continue with Google</span>
+                </div>
+              </a>
+
+              <a
+                data-th-href="@{/oauth2/authorization/github}"
+                class="w-9/12  gsi-material-button bg-gray-200 rounded-2xl flex items-center justify-center px-3 py-2 h-10 text-gray-800 text-sm font-medium cursor-pointer transition-all duration-218 ease-in-out focus:outline-none relative overflow-hidden max-w-[400px] min-w-[min-content]"
+              >
+                <div
+                  class=" gsi-material-button-state absolute inset-0 bg-[#001d35] opacity-0 transition-opacity duration-218"
+                ></div>
+                <div
+                  class="gsi-material-button-content-wrapper flex items-center justify-between w-full"
+                >
+                  <div class="gsi-material-button-icon w-5 h-5 mr-3">
+                    <img th:src="@{/images/github.png}" alt="github" />
+                  </div>
+                  <span class="gsi-material-button-contents flex-1 text-center"
+                    >Continue with Github</span
                   >
                   <span class="hidden">Continue with Google</span>
                 </div>
