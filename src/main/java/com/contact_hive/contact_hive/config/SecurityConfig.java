@@ -93,9 +93,14 @@ public class SecurityConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
         httpSecurity.logout(logoutForm -> {
             logoutForm.logoutUrl("/logout")
-                    .logoutSuccessUrl("/login")
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID");
+                    .logoutSuccessUrl("/login");
+            // .invalidateHttpSession(true)
+            // .deleteCookies("JSESSIONID");
+        });
+
+        // oauth configs
+        httpSecurity.oauth2Login(oauth -> {
+            oauth.loginPage("/login");
         });
 
         return httpSecurity.build();
