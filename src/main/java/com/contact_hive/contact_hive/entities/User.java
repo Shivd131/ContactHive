@@ -83,4 +83,9 @@ public class User implements UserDetails {
     public String getUsername() {
         return this.email;
     }
+
+    public void setPicture(String picture) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setPicture'");
+    }
 }
