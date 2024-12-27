@@ -6,7 +6,7 @@ import java.util.Optional;
 import com.contact_hive.contact_hive.entities.User;
 
 public interface UserService {
-    
+
     User saveUser(User user);
 
     Optional<User> getUserById(String id);
@@ -20,4 +20,6 @@ public interface UserService {
     boolean isUserExistByEmail(String email);
 
     List<User> getAllUsers();
+
+    User getUserByEmail(String email);
 }
