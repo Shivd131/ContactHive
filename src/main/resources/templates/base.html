@@ -46,14 +46,145 @@
     </main>
 
     <footer
-      class="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white py-4"
+      class="relative bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 overflow-hidden"
     >
-      <div class="container mx-auto text-center">
-        Made with ❤️ by Shiv Deshpande.
-      </div>
-      <div class="container mx-auto text-center">
-        © 2024 ContactHive. All Rights Reserved.
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-transparent to-transparent dark:from-blue-900/20 pointer-events-none opacity-60"
+      ></div>
+      <div
+        class="absolute right-0 top-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-full blur-2xl opacity-50"
+      ></div>
+      <div
+        class="absolute left-0 bottom-0 -mb-4 -ml-4 w-32 h-32 bg-gradient-to-tr from-blue-100 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-full blur-2xl opacity-50"
+      ></div>
+
+      <div
+        class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative"
+        x-data="{ 
+        taglineIndex: 0,
+        taglines: [
+          'Where contacts meet their honey match 🍯',
+          'Beezier curves ahead! 📈'
+        ],
+        bugsCount: 0,
+        showCookie: false
+      }"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-2">
+          <div class="text-center md:text-left space-y-6">
+            <div class="space-y-4">
+              <div
+                class="flex items-center justify-center md:justify-start space-x-2"
+              >
+                <span class="text-gray-800 dark:text-gray-200"
+                  >Crafted with</span
+                >
+                <div class="relative group">
+                  <span class="animate-pulse text-red-500 text-xl">❤️</span>
+                  <div
+                    class="absolute z-50 -top-[3.5rem] left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-700 text-white p-3 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow-xl"
+                  >
+                    <div class="relative">
+                      <div class="flex flex-col">
+                        <span class="flex items-center"
+                          ><span class="mr-2">☕</span> 247 cups of coffee</span
+                        >
+                        <span class="flex items-center"
+                          ><span class="mr-2">💡</span> 3am coding
+                          epiphanies</span
+                        >
+                      </div>
+                      <div
+                        class="absolute h-3 w-3 left-1/2 -bottom-3 transform -translate-x-1/2 rotate-45 bg-gray-900 dark:bg-gray-700"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <span class="text-gray-800 dark:text-gray-200">by</span>
+                <div class="relative group">
+                  <a
+                    href="https://github.com/Shivd131"
+                    class="text-blue-600 dark:text-blue-400 hover:text-blue-500 font-medium hover:underline"
+                  >
+                    Shiv Deshpande
+                  </a>
+                  <span
+                    class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-900 dark:bg-gray-700 text-white px-3 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap"
+                  >
+                    Professional Bug Creator 🐛
+                  </span>
+                </div>
+              </div>
+              <p class="text-sm text-gray-500 dark:text-gray-400 italic">
+                "Sleep is for the weak, coffee is for the week"
+                <span class="inline-block animate-bounce">☕</span>
+              </p>
+            </div>
+
+            <div
+              class="flex flex-wrap justify-center md:justify-start gap-4 text-xs"
+            >
+              <div
+                class="bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full text-blue-600 dark:text-blue-400"
+              >
+                <span class="font-mono">while(awake) { code(); }</span>
+              </div>
+              <div
+                class="bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1 rounded-full text-indigo-600 dark:text-indigo-400"
+              >
+                <span class="font-mono">git commit -m "🤞"</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center md:text-right space-y-6">
+            <div
+              class="inline-flex flex-col items-center md:items-end space-y-2"
+            >
+              <div
+                class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400"
+              >
+                <a
+                  href="#"
+                  class="hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200 hover:scale-105 transform"
+                  >Privacy</a
+                >
+                <span
+                  class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"
+                ></span>
+                <a
+                  href="#"
+                  class="hover:text-gray-900 dark:hover:text-gray-200 transition-colors duration-200 hover:scale-105 transform"
+                  >Terms</a
+                >
+               
+              </div>
+              <div class="text-xs text-gray-400 dark:text-gray-500 font-mono">
+                <span class="inline-block hover:animate-spin cursor-pointer"
+                  >🐝</span
+                >
+                ContactHive © 2024
+              </div>
+            </div>
+
+            <div class="relative h-8 overflow-hidden">
+              <p
+                class="text-sm text-gray-500 dark:text-gray-400 transition-all duration-500"
+                x-text="taglines[taglineIndex]"
+                x-init="setInterval(() => { taglineIndex = (taglineIndex + 1) % taglines.length }, 3000)"
+              ></p>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
   </body>
 </html>
