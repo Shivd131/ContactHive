@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    ujb
-</body>
-</html> 
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{base :: parent(~{::#content}, ${loggedInUser.name} + ' | Dashboard')}"
+>
+  <head></head>
+  <body>
+    <div id="content">
+      <div th:if="${loggedInUser}" class="w-full">
+        <div data-th-replace="~{user/sidebar::sidebar}"></div>
+      </div>
+      <div class="pl-64 pt-20" id="content">
+        <h1>dashboard page</h1>
+      </div>
+    </div>
+  </body>
+</html>
