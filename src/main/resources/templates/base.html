@@ -33,7 +33,11 @@
     <title th:text="${title}">ContactHive</title>
   </head>
   <body class="bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-white">
-    <div data-th-replace="navbar :: navbar"></div>
+    <!-- Before your main tag -->
+    <!-- Navigation -->
+    <div
+      th:replace="${loggedInUser != null} ? ~{user/user_navbar :: user_navbar} : ~{navbar :: navbar}"
+    ></div>
 
     <main class="p-4">
       <section class="container mx-auto" th:replace="${content}">
