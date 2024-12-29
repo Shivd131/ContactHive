@@ -49,7 +49,13 @@
                   </p>
                 </div>
 
-                <form class="space-y-4 lg:space-y-6" novalidate>
+                <form
+                  data-th-action="@{/user/contacts/add}"
+                  method="post"
+                  data-th-object="${contactForm}"
+                  class="space-y-4 lg:space-y-6"
+                  novalidate
+                >
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
@@ -59,6 +65,7 @@
                         Name
                       </label>
                       <input
+                        data-th-field="*{name}"
                         type="text"
                         id="name"
                         name="name"
@@ -75,6 +82,7 @@
                         Email Address
                       </label>
                       <input
+                        data-th-field="*{email}"  
                         type="email"
                         id="email"
                         name="email"
@@ -92,6 +100,7 @@
                         Phone Number
                       </label>
                       <input
+                      data-th-field="*{phoneNumber}"
                         type="tel"
                         id="phoneNumber"
                         name="phoneNumber"
@@ -102,14 +111,14 @@
                       <div
                         class="flex flex-col items-start justify-center w-full"
                       >
-                        <label
+                        <div
                           for="picture"
                           class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                         >
                           Profile Picture
-                        </label>
+                        </div>
                         <label
-                          for="dropzone-file"
+                          for="picture"
                           class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500"
                         >
                           <div
@@ -141,7 +150,8 @@
                             </p>
                           </div>
                           <input
-                            id="dropzone-file"
+                          data-th-field="*{picture}"
+                            id="picture"
                             type="file"
                             class="hidden"
                           />
@@ -161,6 +171,7 @@
                         Website
                       </label>
                       <input
+                      data-th-field="*{websiteLink}"
                         type="url"
                         id="websiteLink"
                         name="websiteLink"
@@ -177,6 +188,7 @@
                         LinkedIn Profile
                       </label>
                       <input
+                      data-th-field="*{linkedInLink}"
                         type="url"
                         id="linkedInLink"
                         name="linkedInLink"
@@ -195,6 +207,7 @@
                         Address
                       </label>
                       <textarea
+                        data-th-field="*{address}"
                         id="address"
                         name="address"
                         rows="2"
@@ -210,6 +223,7 @@
                         Description
                       </label>
                       <textarea
+                        data-th-field="*{description}"
                         id="description"
                         name="description"
                         rows="3"
@@ -220,6 +234,7 @@
 
                   <div class="flex items-center">
                     <input
+                      data-th-field="*{favorite}"
                       type="checkbox"
                       id="favorite"
                       name="favorite"
