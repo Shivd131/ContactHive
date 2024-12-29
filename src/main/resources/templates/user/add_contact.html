@@ -4,28 +4,40 @@
   xmlns:th="http://www.thymeleaf.org"
   th:replace="~{base :: parent(~{::#content}, 'ContactHive | Add Contact')}"
 >
-  <head></head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContactHive | Add Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+    </style>
+  </head>
   <body>
     <div id="content" class="flex">
       <div th:if="${loggedInUser}">
         <div data-th-replace="~{user/sidebar::sidebar}"></div>
       </div>
 
-      <!-- Main content with proper sidebar spacing -->
       <div class="flex-1 min-h-screen sm:ml-64 sm:mt-20">
-        <div class="p-4 sm:p-6 lg:p-8 pt-20 ">
-          <div class="max-w-3xl mx-auto ">
-            <!-- Form Card -->
+        <div class="p-4 sm:p-6 lg:p-8 pt-20">
+          <div class="max-w-3xl mx-auto">
             <div
               class="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden"
             >
-              <!-- Top accent border -->
               <div
                 class="h-2 bg-gradient-to-r from-blue-600 to-indigo-600"
               ></div>
 
-              <div class="p-4 sm:p-6 lg:p-8 ">
-                <!-- Header -->
+              <div class="p-4 sm:p-6 lg:p-8">
                 <div class="text-center mb-6">
                   <h1
                     class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white"
@@ -37,43 +49,24 @@
                   </p>
                 </div>
 
-                <!-- Contact Form -->
                 <form class="space-y-4 lg:space-y-6" novalidate>
-                  <!-- Name Fields -->
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        for="firstName"
+                        for="name"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                       >
-                        First Name
+                        Name
                       </label>
                       <input
                         type="text"
-                        id="firstName"
+                        id="name"
+                        name="name"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                         required
                       />
                     </div>
 
-                    <div>
-                      <label
-                        for="lastName"
-                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                      >
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <!-- Contact Info -->
-                  <div class="space-y-4">
                     <div>
                       <label
                         for="email"
@@ -84,58 +77,115 @@
                       <input
                         type="email"
                         id="email"
+                        name="email"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                       />
                     </div>
+                  </div>
 
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        for="phone"
+                        for="phoneNumber"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                       >
                         Phone Number
                       </label>
                       <input
                         type="tel"
-                        id="phone"
+                        id="phoneNumber"
+                        name="phoneNumber"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
-                        required
                       />
                     </div>
+                    <div>
+                      <div
+                        class="flex flex-col items-start justify-center w-full"
+                      >
+                        <label
+                          for="picture"
+                          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                        >
+                          Profile Picture
+                        </label>
+                        <label
+                          for="dropzone-file"
+                          class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500"
+                        >
+                          <div
+                            class="flex flex-col items-center justify-center pt-5 pb-6"
+                          >
+                            <svg
+                              class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 20 16"
+                            >
+                              <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                              />
+                            </svg>
+                            <p
+                              class="mb-2 text-sm text-gray-500 dark:text-gray-400"
+                            >
+                              <span class="font-semibold">Click to upload</span>
+                              or drag and drop
+                            </p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">
+                              SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            </p>
+                          </div>
+                          <input
+                            id="dropzone-file"
+                            type="file"
+                            class="hidden"
+                          />
+                        </label>
+                      </div>
+                    </div>
+
+                    <div></div>
                   </div>
 
-                  <!-- Work Info -->
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        for="work"
+                        for="websiteLink"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                       >
-                        Work Title
+                        Website
                       </label>
                       <input
-                        type="text"
-                        id="work"
+                        type="url"
+                        id="websiteLink"
+                        name="websiteLink"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                        placeholder="https://example.com"
                       />
                     </div>
 
                     <div>
                       <label
-                        for="organization"
+                        for="linkedInLink"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                       >
-                        Organization
+                        LinkedIn Profile
                       </label>
                       <input
-                        type="text"
-                        id="organization"
+                        type="url"
+                        id="linkedInLink"
+                        name="linkedInLink"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                        placeholder="https://linkedin.com/in/username"
                       />
                     </div>
                   </div>
 
-                  <!-- Additional Info -->
                   <div class="space-y-4">
                     <div>
                       <label
@@ -146,6 +196,7 @@
                       </label>
                       <textarea
                         id="address"
+                        name="address"
                         rows="2"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 resize-none"
                       ></textarea>
@@ -156,17 +207,32 @@
                         for="description"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300"
                       >
-                        Notes
+                        Description
                       </label>
                       <textarea
                         id="description"
+                        name="description"
                         rows="3"
                         class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 resize-none"
                       ></textarea>
                     </div>
                   </div>
 
-                  <!-- Form Actions -->
+                  <div class="flex items-center">
+                    <input
+                      type="checkbox"
+                      id="favorite"
+                      name="favorite"
+                      class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    />
+                    <label
+                      for="favorite"
+                      class="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+                    >
+                      Add to favorites
+                    </label>
+                  </div>
+
                   <div
                     class="flex flex-col sm:flex-row items-center gap-3 pt-4"
                   >
@@ -178,6 +244,7 @@
                     </button>
                     <button
                       type="submit"
+                      id="submit-btn"
                       class="w-full sm:flex-1 px-4 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-md hover:shadow-lg transition-all flex items-center justify-center"
                     >
                       Add Contact
