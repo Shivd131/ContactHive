@@ -2,16 +2,206 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{base :: parent(~{::#content}, ${loggedInUser.name} + ' | Add Contact')}"
+  th:replace="~{base :: parent(~{::#content}, 'ContactHive | Add Contact')}"
 >
   <head></head>
   <body>
-    <div id="content">
-      <div th:if="${loggedInUser}" class="w-full">
+    <div id="content" class="flex">
+      <div th:if="${loggedInUser}">
         <div data-th-replace="~{user/sidebar::sidebar}"></div>
       </div>
-      <div class="pl-64 pt-20" id="content">
-        <h1>dashboard page</h1>
+
+      <!-- Main content with proper sidebar spacing -->
+      <div class="flex-1 min-h-screen sm:ml-64 sm:mt-20">
+        <div class="p-4 sm:p-6 lg:p-8 pt-20 ">
+          <div class="max-w-3xl mx-auto ">
+            <!-- Form Card -->
+            <div
+              class="bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden"
+            >
+              <!-- Top accent border -->
+              <div
+                class="h-2 bg-gradient-to-r from-blue-600 to-indigo-600"
+              ></div>
+
+              <div class="p-4 sm:p-6 lg:p-8 ">
+                <!-- Header -->
+                <div class="text-center mb-6">
+                  <h1
+                    class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white"
+                  >
+                    Add New Contact
+                  </h1>
+                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Add a new contact to your network
+                  </p>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="space-y-4 lg:space-y-6" novalidate>
+                  <!-- Name Fields -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        for="firstName"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        for="lastName"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Contact Info -->
+                  <div class="space-y-4">
+                    <div>
+                      <label
+                        for="email"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        for="phone"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Work Info -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        for="work"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Work Title
+                      </label>
+                      <input
+                        type="text"
+                        id="work"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                      />
+                    </div>
+
+                    <div>
+                      <label
+                        for="organization"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Organization
+                      </label>
+                      <input
+                        type="text"
+                        id="organization"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Additional Info -->
+                  <div class="space-y-4">
+                    <div>
+                      <label
+                        for="address"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Address
+                      </label>
+                      <textarea
+                        id="address"
+                        rows="2"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 resize-none"
+                      ></textarea>
+                    </div>
+
+                    <div>
+                      <label
+                        for="description"
+                        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >
+                        Notes
+                      </label>
+                      <textarea
+                        id="description"
+                        rows="3"
+                        class="mt-1 block w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 resize-none"
+                      ></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Form Actions -->
+                  <div
+                    class="flex flex-col sm:flex-row items-center gap-3 pt-4"
+                  >
+                    <button
+                      type="reset"
+                      class="w-full sm:w-auto px-4 py-2.5 border border-red-600 dark:border-red-500 text-red-600 dark:text-red-500 text-sm font-medium rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
+                    >
+                      Clear form
+                    </button>
+                    <button
+                      type="submit"
+                      class="w-full sm:flex-1 px-4 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-md hover:shadow-lg transition-all flex items-center justify-center"
+                    >
+                      Add Contact
+                      <svg
+                        class="ml-2 -mr-1 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
