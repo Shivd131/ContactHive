@@ -10,7 +10,6 @@
       <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
         <div class="max-w-md mx-auto">
           <div class="relative">
-            <!-- Background decorative elements -->
             <div class="absolute inset-0 -z-10">
               <div
                 class="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 rounded-xl"
@@ -23,11 +22,9 @@
               ></div>
             </div>
 
-            <!-- Main card -->
             <div
               class="relative bg-white dark:bg-gray-800 rounded-xl shadow-xl overflow-hidden"
             >
-              <!-- Top accent border with gradient -->
               <div
                 class="h-2 bg-gradient-to-r from-blue-600 to-indigo-600"
               ></div>
@@ -35,7 +32,6 @@
               <div class="p-8">
                 <div data-th-replace="message::messagebox"></div>
 
-                <!-- Header -->
                 <div class="text-center mb-8">
                   <h1 class="text-3xl font-bold text-gray-900 dark:text-white">
                     Welcome back
@@ -45,7 +41,6 @@
                   </p>
                 </div>
 
-                <!-- Alert messages -->
                 <div class="mb-6">
                   <div
                     th:if="${param.error}"
@@ -91,7 +86,6 @@
                   </div>
                 </div>
 
-                <!-- Login form -->
                 <form
                   th:action="@{/authenticate}"
                   method="post"
@@ -190,7 +184,6 @@
                   </div>
                 </form>
 
-                <!-- Divider -->
                 <div class="relative my-6">
                   <div class="absolute inset-0 flex items-center">
                     <div
@@ -205,7 +198,6 @@
                   </div>
                 </div>
 
-                <!-- OAuth Buttons -->
                 <div class="space-y-4">
                   <a
                     data-th-href="@{/oauth2/authorization/google}"
@@ -251,7 +243,6 @@
                   </a>
                 </div>
 
-                <!-- Sign up link -->
                 <p
                   class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400"
                 >
