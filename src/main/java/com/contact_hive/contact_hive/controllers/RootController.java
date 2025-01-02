@@ -1,7 +1,5 @@
 package com.contact_hive.contact_hive.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
@@ -19,8 +17,6 @@ import com.contact_hive.contact_hive.services.UserService;
 // @InitBinder, or @ModelAttribute methods to be shared across multiple
 // @Controller classes
 public class RootController {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserService userService;
