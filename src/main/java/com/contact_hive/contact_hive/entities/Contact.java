@@ -31,6 +31,7 @@ public class Contact {
     private String email;
     private String phoneNumber;
     private String address;
+    @Column(length = 2048) // Adjusted for long URLs
     private String picture;
 
     @Column(length = 500)

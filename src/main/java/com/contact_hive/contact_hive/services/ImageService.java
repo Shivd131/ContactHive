@@ -10,6 +10,6 @@ public interface ImageService {
 
     public List<String> allFiles();
 
-    public String preSignedUrl();
+    public String preSignedUrl(String filename);
 
 }

@@ -1,6 +1,8 @@
 package com.contact_hive.contact_hive.implementation;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
@@ -37,7 +41,8 @@ public class ImageServiceImpl implements ImageService {
                     .putObject(new PutObjectRequest(bucketName, fileName, contactImage.getInputStream(), metaData));
             System.out.println("\n Image uploaded to S3");
             System.out.println("\n Image URL: " + putObjectResult.getMetadata().getUserMetaDataOf("url"));
-            return fileName;
+            System.out.println(this.preSignedUrl(fileName));
+            return this.preSignedUrl(fileName);
         } catch (IOException e) {
             throw new ImageUploadException("Error uploading image " + e.getMessage());
         }
@@ -51,9 +56,17 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public String preSignedUrl() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'preSignedUrl'");
+    public String preSignedUrl(String filename) {
+        Date expirationDate = new Date();
+        long time = expirationDate.getTime();
+        int hour = 1;
+        time = time + 1000 * 60 * 60 * hour;
+        expirationDate.setTime(time);
+        GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucketName, filename)
+                .withMethod(HttpMethod.GET).withExpiration(expirationDate);
+
+        URL url = amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
+        return url.toString();
     }
 
 }
