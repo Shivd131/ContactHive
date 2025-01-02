@@ -133,22 +133,41 @@
                       </p>
                     </div>
                     <div class="space-y-2">
-                      <label
-                        for="picture"
+                      <div
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
                         Profile Picture
-                      </label>
+                      </div>
                       <div
                         class="flex flex-col items-center justify-center w-full"
                       >
                         <label
                           for="picture"
-                          class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 transition-all duration-300"
+                          class="relative flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-800 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 transition-all duration-300"
+                          ondragover="event.preventDefault(); event.stopPropagation(); this.classList.add('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/20');"
+                          ondragleave="event.preventDefault(); this.classList.remove('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/20');"
+                          ondrop="event.preventDefault(); 
+                              this.classList.remove('border-blue-500', 'bg-blue-50', 'dark:bg-blue-900/20');
+                              const file = event.dataTransfer.files[0];
+                              if (file) {
+                                document.getElementById('file-text').textContent = file.name;
+                                const reader = new FileReader();
+                                reader.onload = (e) => {
+                                  document.getElementById('image-preview').src = e.target.result;
+                                  document.getElementById('image-preview').classList.remove('hidden');
+                                };
+                                reader.readAsDataURL(file);
+                                document.getElementById('picture').files = event.dataTransfer.files;
+                              }"
                         >
                           <div
                             class="flex flex-col items-center justify-center pt-5 pb-6"
                           >
+                            <img
+                              id="image-preview"
+                              class="w-24 h-24 mb-3 rounded-full hidden object-cover"
+                              alt="Preview"
+                            />
                             <svg
                               class="w-10 h-10 mb-3 text-gray-400"
                               fill="none"
@@ -166,7 +185,9 @@
                             <p
                               class="mb-2 text-sm text-gray-500 dark:text-gray-400"
                             >
-                              <span class="font-semibold">Click to upload</span>
+                              <span id="file-text" class="font-semibold"
+                                >Click to upload</span
+                              >
                               or drag and drop
                             </p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">
@@ -177,10 +198,28 @@
                             data-th-field="*{contactImage}"
                             id="picture"
                             type="file"
+                            accept="image/*"
                             class="hidden"
+                            onchange="const fileText = document.getElementById('file-text');
+    const imagePreview = document.getElementById('image-preview');
+    if (this.files && this.files[0]) {
+      fileText.textContent = this.files[0].name;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        imagePreview.src = e.target.result;
+        imagePreview.classList.remove('hidden');
+      }
+      reader.readAsDataURL(this.files[0]);
+    }"
                           />
                         </label>
                       </div>
+                      <p
+                        id="file-error"
+                        class="text-red-600 dark:text-red-500 text-sm hidden"
+                      >
+                        Invalid file. Please select an image file.
+                      </p>
                     </div>
                   </div>
 
@@ -336,44 +375,5 @@
         </div>
       </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        const fileInput = document.getElementById("picture");
-        const fileLabel = fileInput.nextElementSibling;
-        const originalLabelText = fileLabel.innerHTML;
-
-        fileInput.addEventListener("change", (e) => {
-          if (e.target.files.length > 0) {
-            const fileName = e.target.files[0].name;
-            fileLabel.innerHTML = `<p class="text-sm text-gray-500 dark:text-gray-400">File selected: ${fileName}</p>`;
-          } else {
-            fileLabel.innerHTML = originalLabelText;
-          }
-        });
-
-        const form = document.querySelector("form");
-        const submitBtn = document.getElementById("submit-btn");
-
-        form.addEventListener("submit", (e) => {
-          e.preventDefault();
-          submitBtn.disabled = true;
-          submitBtn.classList.add("animate-pulse");
-          submitBtn.innerHTML = "Adding Contact...";
-
-          // Simulate form submission (replace with actual form submission logic)
-          setTimeout(() => {
-            submitBtn.disabled = false;
-            submitBtn.classList.remove("animate-pulse");
-            submitBtn.innerHTML = "Contact Added!";
-            setTimeout(() => {
-              submitBtn.innerHTML =
-                'Add Contact <svg class="ml-2 -mr-1 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>';
-            }, 2000);
-          }, 2000);
-        });
-      });
-    </script>
   </body>
 </html>
-```
