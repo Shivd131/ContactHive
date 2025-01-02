@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +14,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.amazonaws.HttpMethod;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.GeneratePresignedUrlRequest;
+import com.amazonaws.services.s3.model.ListObjectsRequest;
+import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.contact_hive.contact_hive.exeptions.ImageUploadException;
 import com.contact_hive.contact_hive.services.ImageService;
 
@@ -36,6 +40,7 @@ public class ImageServiceImpl implements ImageService {
         // metadata
         ObjectMetadata metaData = new ObjectMetadata();
         metaData.setContentLength(contactImage.getSize());
+
         try {
             PutObjectResult putObjectResult = amazonS3
                     .putObject(new PutObjectRequest(bucketName, fileName, contactImage.getInputStream(), metaData));
@@ -46,13 +51,18 @@ public class ImageServiceImpl implements ImageService {
         } catch (IOException e) {
             throw new ImageUploadException("Error uploading image " + e.getMessage());
         }
-        // return url of the uploaded image
     }
 
     @Override
     public List<String> allFiles() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'allFiles'");
+        ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(bucketName);
+        
+        ListObjectsV2Result result = amazonS3.listObjectsV2(bucketName);
+        List<S3ObjectSummary> objectSummaries = result.getObjectSummaries();
+
+        List<String> listOfFiles = objectSummaries.stream().map(item -> this.preSignedUrl(item.getKey())).toList();
+
+        return listOfFiles;
     }
 
     @Override
