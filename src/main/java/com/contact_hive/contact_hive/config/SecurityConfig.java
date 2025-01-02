@@ -79,7 +79,8 @@ public class SecurityConfig {
         httpSecurity
                 .authorizeHttpRequests(authorize -> {
                     authorize.requestMatchers("/css/**", "/js/**", "/images/**", "/static/**").permitAll();
-                    authorize.requestMatchers("/", "/home", "/login", "/register").permitAll();
+                    authorize.requestMatchers("/", "/home", "/login", "/register", "/api/v1/s3/*", "api/v1/s3")
+                            .permitAll();
                     authorize.requestMatchers("/user/**").authenticated();
                     authorize.anyRequest().permitAll();
                 })
