@@ -17,6 +17,7 @@ import com.contact_hive.contact_hive.helpers.Helper;
 import com.contact_hive.contact_hive.helpers.Message;
 import com.contact_hive.contact_hive.helpers.MessageType;
 import com.contact_hive.contact_hive.services.ContactService;
+import com.contact_hive.contact_hive.services.ImageService;
 import com.contact_hive.contact_hive.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -30,6 +31,9 @@ public class ContactController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ImageService imageService;
 
     @GetMapping("/add")
     public String addContactView(Model model) {
@@ -54,25 +58,25 @@ public class ContactController {
         User user = userService.getUserByEmail(username);
 
         // image processing
+        // upload image
+        String fileURL = imageService.uploadImage(contactForm.getContactImage());
 
         System.out.println("file info: " + contactForm.getContactImage().getOriginalFilename());
         Contact contact = new Contact();
-        // contact.setAddress(contactForm.getAddress());
-        // contact.setDescription(contactForm.getDescription());
-        // contact.setEmail(contactForm.getEmail());
-        // contact.setFavorite(contactForm.isFavorite());
-        // contact.setLinkedInLink(contactForm.getLinkedInLink());
-        // contact.setName(contactForm.getName());
-        // contact.setPhoneNumber(contactForm.getPhoneNumber());
-        // contact.setPicture(contactForm.getPicture());
-        // contact.setSocialLinks(contactForm.getSocialLinks());
-        // contact.setWebsiteLink(contactForm.getWebsiteLink());
+        contact.setAddress(contactForm.getAddress());
+        contact.setDescription(contactForm.getDescription());
+        contact.setEmail(contactForm.getEmail());
+        contact.setFavorite(contactForm.isFavorite());
+        contact.setLinkedInLink(contactForm.getLinkedInLink());
+        contact.setName(contactForm.getName());
+        contact.setPhoneNumber(contactForm.getPhoneNumber());
+        contact.setPicture(fileURL);
+        contact.setLinkedInLink(contactForm.getLinkedInLink());
+        contact.setWebsiteLink(contactForm.getWebsiteLink());
 
-        // contact.setUser(user);
+        contact.setUser(user);
 
-        // contactService.save(contact);
-        // set the contact picture url
-        // redirect to contacts page
+        contactService.save(contact);
 
         session.setAttribute("message",
                 Message.builder().content("Contact added successfully").type(MessageType.green).build());
