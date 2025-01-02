@@ -106,6 +106,15 @@
 		3. Add the oauth login configuration :
 		4. login page /login and successhandler
 		5. in your success handler you are getting data ... save kare sakte hai data based on provider information -->
+	
+		<!--
+			AWS SDK DEPS
+		-->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.12.694</version>
+		</dependency>
 	</dependencies>
 
 	<build>
