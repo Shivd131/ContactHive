@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +29,11 @@ public class S3Controller {
     @GetMapping
     public List<String> getAllFiles() {
         return imageService.allFiles();
+    }
+
+    @GetMapping("/{fileName}")
+    public String urlByName(@PathVariable String fileName) {
+        return imageService.getImageUrlByName(fileName);
     }
 
 }

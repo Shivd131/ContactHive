@@ -19,6 +19,7 @@ import com.amazonaws.services.s3.model.ListObjectsV2Result;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.contact_hive.contact_hive.exeptions.ImageUploadException;
 import com.contact_hive.contact_hive.services.ImageService;
@@ -56,7 +57,7 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public List<String> allFiles() {
         ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(bucketName);
-        
+
         ListObjectsV2Result result = amazonS3.listObjectsV2(bucketName);
         List<S3ObjectSummary> objectSummaries = result.getObjectSummaries();
 
@@ -77,6 +78,14 @@ public class ImageServiceImpl implements ImageService {
 
         URL url = amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
         return url.toString();
+    }
+
+    @Override
+    public String getImageUrlByName(String fileName) {
+        S3Object object = amazonS3.getObject(bucketName, fileName);
+        String key = object.getKey();
+        String url = preSignedUrl(key);
+        return url;
     }
 
 }

@@ -12,4 +12,6 @@ public interface ImageService {
 
     public String preSignedUrl(String filename);
 
+    public String getImageUrlByName(String fileName);
+
 }
