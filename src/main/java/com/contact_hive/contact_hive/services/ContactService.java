@@ -2,6 +2,7 @@ package com.contact_hive.contact_hive.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import com.contact_hive.contact_hive.entities.Contact;
 import com.contact_hive.contact_hive.entities.User;
 
@@ -20,5 +21,5 @@ public interface ContactService {
 
     List<Contact> getByUserId(String userId);
 
-    List<Contact> getByUser(User user);
+    Page<Contact> getByUser(User user, int page, int size, String sortBy, String direction);
 }
