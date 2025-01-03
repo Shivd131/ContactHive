@@ -1,5 +1,7 @@
 package com.contact_hive.contact_hive.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -81,6 +83,16 @@ public class ContactController {
         session.setAttribute("message",
                 Message.builder().content("Contact added successfully").type(MessageType.green).build());
         return "redirect:/user/contacts/add";
+    }
+
+    @GetMapping
+    public String viewContacts(Authentication authentication, Model model) {
+        String username = Helper.getEmailOfLoggedInUser(authentication);
+        User user = userService.getUserByEmail(username);
+
+        List<Contact> contacts = contactService.getByUser(user);
+        model.addAttribute("contacts", contacts);
+        return "user/contacts";
     }
 
 }

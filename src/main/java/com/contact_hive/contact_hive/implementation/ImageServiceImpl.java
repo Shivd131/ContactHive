@@ -67,7 +67,7 @@ public class ImageServiceImpl implements ImageService {
     public String preSignedUrl(String filename) {
         Date expirationDate = new Date();
         long time = expirationDate.getTime();
-        int hour = 1;
+        int hour = 100;
         time = time + 1000 * 60 * 60 * hour;
         expirationDate.setTime(time);
         GeneratePresignedUrlRequest generatePresignedUrlRequest = new GeneratePresignedUrlRequest(bucketName, filename)
