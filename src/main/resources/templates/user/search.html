@@ -2,7 +2,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{base :: parent(~{::#content}, ${loggedInUser.name} + ' | Contact')}"
+  th:replace="~{base :: parent(~{::#content}, ${loggedInUser.name} + ' | Search')}"
 >
   <head></head>
   <body>
@@ -11,7 +11,6 @@
         <div data-th-replace="~{user/sidebar::sidebar}"></div>
       </div>
       <div class="pl-64 pt-20" id="content">
-        <h1>contacts page</h1>
         <div class="contacts_container p-4 sm:p-6 lg:p-8">
           <div
             class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
@@ -27,6 +26,7 @@
                   <div>
                     <select
                       data-th-field="*{field}"
+                      name="field"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     >
                       <option value="">Select a field</option>
@@ -39,6 +39,7 @@
                   <div class="relative w-full sm:w-auto">
                     <input
                       data-th-field="*{value}"
+                      name="keyword"
                       type="text"
                       class="block w-full sm:w-64 p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition-colors duration-200"
                       placeholder="Search for users"
@@ -66,8 +67,13 @@
                   <button type="submit">search</button>
                 </div>
               </form>
-
-              <div class="overflow-x-auto flex items-center flex-col">
+              <div class="text-center" data-th-if="${pageContact.content.size() == 0}">
+                Oops! No matching contacts found.
+              </div>
+              <div
+                data-th-if="${pageContact.content.size() > 0}"
+                class="overflow-x-auto flex items-center flex-col"
+              >
                 <table
                   class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
                 >
@@ -260,7 +266,7 @@
                     <ul class="flex items-center -space-x-px h-10 text-base">
                       <li data-th-unless="${pageContact.first}">
                         <a
-                          data-th-href="@{'/user/contacts?size='+${pageSize}+'&page=' + ${pageContact.number - 1}}"
+                          data-th-href="@{'/user/contacts/search?size='+${pageSize}+'&page=' + ${pageContact.number - 1}  + '&field=' + ${field} + '&value=' + ${value}}"
                           href="#"
                           class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         >
@@ -287,7 +293,7 @@
                       >
                         <a
                           th:classappend="${i == pageContact.number + 1} ? 'bg-gray-300 dark:bg-gray-950' : 'bg-white dark:bg-gray-800'"
-                          data-th-href="@{'/user/contacts?size='+${pageSize}+'&page=' + ${i - 1}}"
+                          data-th-href="@{'/user/contacts/search?size=' + ${pageSize} + '&page=' + (${i - 1}) + '&field=' + ${field} + '&value=' + ${value}}"
                           data-th-text="${i}"
                           class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                           >1</a
@@ -296,7 +302,7 @@
 
                       <li data-th-unless="${pageContact.last}">
                         <a
-                          data-th-href="@{'/user/contacts?size='+${pageSize}+'&page=' + ${pageContact.number + 1}}"
+                          data-th-href="@{'/user/contacts/search?size='+${pageSize}+'&page=' + ${pageContact.number + 1}  + '&field=' + ${field} + '&value=' + ${value}}"
                           href="#"
                           class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                         >

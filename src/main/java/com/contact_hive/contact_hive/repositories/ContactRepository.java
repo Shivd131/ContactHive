@@ -22,4 +22,8 @@ public interface ContactRepository extends JpaRepository<Contact, String> {
     // pagination
     Page<Contact> findByUser(User user, Pageable pageable);
 
+    Page<Contact> findByUserAndNameContaining(User user, String name, Pageable pageable);
+    Page<Contact> findByUserAndEmailContaining( User user, String email, Pageable pageable);
+    Page<Contact> findByUserAndPhoneNumberContaining( User user, String phoneNumber, Pageable pageable);
+
 }
