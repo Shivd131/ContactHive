@@ -10,7 +10,7 @@
       <div th:if="${loggedInUser}" class="w-full">
         <div data-th-replace="~{user/sidebar::sidebar}"></div>
       </div>
-      <div class="pl-64 pt-20" id="content">
+      <div class="sm:pl-64 pt-20" id="content">
         <div class="contacts_container p-4 sm:p-6 lg:p-8">
           <div
             class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
@@ -100,7 +100,7 @@
                 </div>
               </form>
 
-              <div class="overflow-x-auto flex items-center flex-col">
+              <div class="overflow-x-auto items-center flex-col">
                 <table
                   class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
                 >
@@ -354,6 +354,7 @@
                     </ul>
                   </nav>
                 </div>
+              
               </div>
             </div>
           </div>
