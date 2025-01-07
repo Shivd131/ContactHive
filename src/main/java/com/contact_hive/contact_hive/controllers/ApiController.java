@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.contact_hive.contact_hive.entities.Contact;
 import com.contact_hive.contact_hive.services.ContactService;
 
 @RestController
@@ -15,7 +16,7 @@ public class ApiController {
     private ContactService contactService;
 
     @GetMapping("/contacts/{contactId}")
-    public String getContact(@PathVariable String contactId) {
-        return contactService.getById(contactId).toString();
+    public Contact getContact(@PathVariable String contactId) {
+        return contactService.getById(contactId);
     }
 }

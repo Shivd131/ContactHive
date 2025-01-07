@@ -259,6 +259,8 @@
                             </svg>
                           </button>
                           <button
+                            th:data-id="${c.id}"
+                            th:onclick="loadContactData(this.getAttribute('data-id'))"
                             class="text-green-600 hover:text-green-900 dark:text-green-500 dark:hover:text-green-400 transition-colors duration-200"
                           >
                             <svg
@@ -359,7 +361,14 @@
           </div>
         </div>
       </div>
-      <!-- <div data-th-replace="~{user/contact_modals :: contact}"></div> -->
+      <div data-th-replace="~{user/contact_modals :: contact}"></div>
+    </div>
+
+    <div th:fragment="scripts" defer>
+      <script defer>
+        console.log("sdf");
+      </script>
+      <script th:src="@{'/js/contacts.js'}" defer></script>
     </div>
   </body>
 </html>

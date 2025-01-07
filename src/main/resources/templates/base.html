@@ -48,6 +48,10 @@
     </main>
 
     <footer
+      x-data="{
+      taglines: ['Contacts, buzzing with life 🐝📇','Hive your contacts together 🏠📞','Networking made sweeter than honey 🍯📱'],
+      taglineIndex: 0
+    }"
       class="w-full bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"
       th:classappend="${loggedInUser != null} ? 'sm:pl-64' : ''"
     >
@@ -166,7 +170,9 @@
         </div>
       </div>
     </footer>
-
+    <script>
+      console.log("base log");
+    </script>
     <script
       defer
       src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"
@@ -176,6 +182,9 @@
       src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-
+    <script>
+      console.log("base log 2");
+    </script>
+    <div th:replace="~{user/contacts :: scripts}"></div>
   </body>
 </html>
