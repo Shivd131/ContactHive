@@ -267,6 +267,8 @@
                             </svg>
                           </button>
                           <button
+                            th:data-id="${c.id}"
+                            th:onclick="loadContactData(this.getAttribute('data-id'))"
                             class="text-green-600 hover:text-green-900 dark:text-green-500 dark:hover:text-green-400 transition-colors duration-200"
                           >
                             <svg
@@ -307,7 +309,8 @@
                         >
                           <span class="sr-only">Previous</span>
                           <svg
-                            class="w-3 h-3 rtl:rotate-180"                            xmlns="http://www.w3.org/2000/svg"
+                            class="w-3 h-3 rtl:rotate-180"
+                            xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 6 10"
                           >
@@ -364,6 +367,7 @@
           </div>
         </div>
       </div>
+      <div data-th-replace="~{user/contact_modals :: contact}"></div>
     </div>
   </body>
 </html>
