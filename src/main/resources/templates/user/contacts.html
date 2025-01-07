@@ -240,7 +240,13 @@
                               ></path>
                             </svg>
                           </button>
+                          <!-- <a
+                            data-th-href="@{/user/contacts/delete/{id}(id=${c.id})}"
+                          > -->
+
                           <button
+                            th:data-id="${c.id}"
+                            th:onclick="deleteContact(this.getAttribute('data-id'))"
                             class="text-red-600 hover:text-red-900 dark:text-red-500 dark:hover:text-red-400 transition-colors duration-200"
                           >
                             <svg
@@ -258,6 +264,8 @@
                               ></path>
                             </svg>
                           </button>
+                          <!-- </a> -->
+
                           <button
                             th:data-id="${c.id}"
                             th:onclick="loadContactData(this.getAttribute('data-id'))"
@@ -368,6 +376,7 @@
       <script defer>
         console.log("sdf");
       </script>
+
       <script th:src="@{'/js/contacts.js'}" defer></script>
     </div>
   </body>

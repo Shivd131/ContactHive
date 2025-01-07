@@ -27,4 +27,5 @@ public interface ContactService {
     Page<Contact> searchByPhone(String phone, int size, int page, String sortBy, String direction, User user);
     Page<Contact> searchByName(String name, int size, int page, String sortBy, String direction, User user);   
 
+    
 }

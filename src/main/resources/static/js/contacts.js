@@ -73,17 +73,19 @@ async function loadContactData(id) {
 
 // delete contact
 
+
 async function deleteContact(id) {
-  Swal.fire({
-    title: "Do you want to delete the contact?",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Delete",
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
-      const url = `${baseURL}/user/contacts/delete/` + id;
-      window.location.replace(url);
-    }
-  });
+  //   Swal.fire({
+  //     title: "Do you want to delete the contact?",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonText: "Delete",
+  //   }).then((result) => {
+  //     /* Read more about isConfirmed, isDenied below */
+  //     if (result.isConfirmed) {
+  //       const url = `${baseURL}/user/contacts/delete/` + id;
+  //       window.location.replace(url);
+  //     }
+  //   });
+  alert("Are you sure to delete this contact? ");
 }
