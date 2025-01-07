@@ -1,6 +1,5 @@
 console.log("Contacts.js");
-// const baseURL = "http://localhost:8081";
-const baseURL = "https://www.scm20.site";
+const baseURL = "http://localhost:8081";
 const viewContactModal = document.getElementById("default-modal");
 
 // options with default values
@@ -41,7 +40,7 @@ function closeContactModal() {
 
 async function loadContactData(id) {
   try {
-    const response = await fetch(`http://localhost:8081/api/contacts/${id}`);
+    const response = await fetch(`${baseURL}/api/contacts/${id}`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -73,19 +72,14 @@ async function loadContactData(id) {
 
 // delete contact
 
-
 async function deleteContact(id) {
-  //   Swal.fire({
-  //     title: "Do you want to delete the contact?",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText: "Delete",
-  //   }).then((result) => {
-  //     /* Read more about isConfirmed, isDenied below */
-  //     if (result.isConfirmed) {
-  //       const url = `${baseURL}/user/contacts/delete/` + id;
-  //       window.location.replace(url);
-  //     }
-  //   });
-  alert("Are you sure to delete this contact? ");
+  console.log("deleteContact", id);
+  const confirmation = confirm("Are you sure you want to delete this contact?");
+  if (confirmation) {
+    const url = `${baseURL}/user/contacts/delete/` + id;
+    window.location.replace(url);
+    alert("Contact deleted successfully.");
+  } else {
+    alert("Contact deletion cancelled.");
+  }
 }

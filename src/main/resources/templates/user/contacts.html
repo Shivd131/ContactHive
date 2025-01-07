@@ -99,8 +99,18 @@
                   </div>
                 </div>
               </form>
-
-              <div class="overflow-x-auto items-center flex-col">
+              <div data-th-if="${pageContact.content.size() == 0}" class="p-6">
+                <div
+                  class="flex items-center justify-center space-x-2 text-gray-500 dark:text-gray-400"
+                >
+                 
+                    <span>Oops! No contacts found in your hive</span>
+                </div>
+              </div>
+              <div
+                data-th-if="${pageContact.content.size() > 0}"
+                class="overflow-x-auto items-center flex-col"
+              >
                 <table
                   class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
                 >
