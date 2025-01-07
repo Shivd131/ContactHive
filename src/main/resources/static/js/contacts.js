@@ -53,7 +53,16 @@ async function loadContactData(id) {
     const data = JSON.parse(rawText);
     console.log("Parsed data:", data);
 
-    document.querySelector("#contact-name").textContent = data.name;    
+    document.querySelector("#contact-name").textContent = data.name;
+    document.querySelector("#contact-email").textContent = data.email;
+    document.querySelector("#contact-phone").textContent = data.phoneNumber;
+    document.querySelector("#contact-address").textContent = data.address;
+    document.querySelector("#contact-description").textContent =
+      data.description;
+    document.querySelector("#contact-picture").src = data.picture;
+    document.querySelector("#contact-linkedin").href = data.linkedInLink;
+    document.querySelector("#contact-website").href = data.websiteLink;
+
     openContactModal();
     return data;
   } catch (error) {
