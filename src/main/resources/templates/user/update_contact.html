@@ -53,7 +53,7 @@
                 </div>
 
                 <form
-                  data-th-action="@{/user/contacts/add}"
+                  data-th-action="@{'/user/contacts/update/' + ${contactId}}"
                   method="post"
                   data-th-object="${contactForm}"
                   class="space-y-6"

@@ -1,6 +1,7 @@
 package com.contact_hive.contact_hive.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -167,6 +168,44 @@ public class ContactController {
         contactForm.setWebsiteLink(contact.getWebsiteLink());
         contactForm.setPicture(contact.getPicture());
         model.addAttribute("contactForm", contactForm);
+        model.addAttribute("contactId", contactId);
         return "user/update_contact";
+    }
+
+    @PostMapping("/update/{contactId}")
+    public String updateContact(
+            @PathVariable("contactId") String contactId,
+            @Valid @ModelAttribute ContactForm contactForm,
+            BindingResult result,
+            HttpSession session) {
+        if (result.hasErrors()) {
+            session.setAttribute("message",
+                    Message.builder().content("Please correct the following errors").type(MessageType.red).build());
+            return "user/update_contact";
+        }
+        var existingContact = contactService.getById(contactId);
+        var contact = new Contact();
+        contact.setId(contactId);
+        contact.setPicture(existingContact.getPicture());
+        contact.setAddress(contactForm.getAddress());
+        contact.setDescription(contactForm.getDescription());
+        contact.setEmail(contactForm.getEmail());
+        contact.setFavorite(contactForm.isFavorite());
+        contact.setLinkedInLink(contactForm.getLinkedInLink());
+        contact.setName(contactForm.getName());
+        contact.setPhoneNumber(contactForm.getPhoneNumber());
+        contact.setWebsiteLink(contactForm.getWebsiteLink());
+
+        // image processing
+        // upload image
+        if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
+            String imagePublicId = imageService.uploadImage(contactForm.getContactImage());
+
+            contact.setPicture(imagePublicId);
+            contactForm.setPicture(imagePublicId);
+        }
+
+        contactService.update(contact);
+        return "redirect:/user/contacts";
     }
 }
