@@ -1,0 +1,284 @@
+[33mcommit 49952848db4c502e05997b2973e342f375c3634a[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Tue Jan 7 21:22:35 2025 +0530
+
+    feat: delete contact
+
+[33mcommit 74c868d554b20072c91e8ceaefe97131386d4b67[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Tue Jan 7 18:08:16 2025 +0530
+
+    feat: delete user alert
+
+[33mcommit 68c6934fdff2c435a3f526cd72bcd22b5f16d122[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Tue Jan 7 17:24:40 2025 +0530
+
+    feat: modal in search
+
+[33mcommit ff6cfd07608492ff091fba327e4cc11291843ff0[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Tue Jan 7 17:10:29 2025 +0530
+
+    feat: enhanced UI
+
+[33mcommit 436e38bd5f098699ceb6a0250430a5118bf56ec8[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Tue Jan 7 17:07:59 2025 +0530
+
+    feat: modal ui
+
+[33mcommit 0234f9284d6594c758bb1fe954e20c04b0788007[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Tue Jan 7 16:51:12 2025 +0530
+
+    feat: modal and fetching contact data
+
+[33mcommit 64aba825b9700d84c70e1ad9c0927fe02e23a17c[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Jan 6 21:45:36 2025 +0530
+
+    fix: flowbite skill issue
+
+[33mcommit ee18782cba8abe78a77a4bd006f04adb685e7601[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Jan 6 18:35:57 2025 +0530
+
+    feat: UI fixes
+
+[33mcommit 72279370d51bf166c2c90f6ce19275f67ff3dd6a[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Jan 6 18:26:08 2025 +0530
+
+    UI: fixes
+
+[33mcommit ee0f6c951482fd95b995664d6a83b577782b81fc[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Jan 6 18:00:07 2025 +0530
+
+    feat: paginated search functionality and ui
+
+[33mcommit e58eefa3de7a42842a5a246a033d024b20fe63f5[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Jan 3 13:18:50 2025 +0530
+
+    feat: pagination
+
+[33mcommit 45e4827b8d4280bbc58b5369477f97b8936008be[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Jan 3 12:21:56 2025 +0530
+
+    feat: contacts table ui
+
+[33mcommit 6400a014225161b28739b9173c9f51bd1ac2500a[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 22:39:27 2025 +0530
+
+    cleanup
+
+[33mcommit 694ca05205a0af25891a1237af0089088dfca671[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 22:31:42 2025 +0530
+
+    feat: ui, contact image
+
+[33mcommit f7da99d500d2c5d0c36ad924578618ec07b13007[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 14:24:41 2025 +0530
+
+    feat: get image url
+
+[33mcommit 0da74520ecc3db47e31dcef3ca10c8a09b5056d2[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 14:12:53 2025 +0530
+
+    feat: list all images
+
+[33mcommit a924893a2013a17aed29f58dc9484f8cf470ccc2[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 13:52:35 2025 +0530
+
+    feat: presignedurl
+
+[33mcommit 32d0fd27687ac5e0652c2cb00192de5d212ae8e6[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 12:56:52 2025 +0530
+
+    feat: upload image to aws
+
+[33mcommit 7ff817df402e138bdf29a9ab548e78544d00814c[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 12:05:58 2025 +0530
+
+    feat: s3 config
+
+[33mcommit a11e05c3818901a8a580c2335122018ca3215d01[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 11:53:15 2025 +0530
+
+    feat: config
+
+[33mcommit 6e639d5cf48f9617070c726d6c3a39cf6a9d19a6[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Jan 2 11:12:27 2025 +0530
+
+    feat: image controller structure
+
+[33mcommit 0154635d79b9eb19eb29b4799acca6cc82c1e6bc[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Wed Jan 1 17:28:09 2025 +0530
+
+    feat: processing add contact form
+
+[33mcommit d0873e33154f751e25202cc300e817cf75ccef48[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 29 15:55:16 2024 +0530
+
+    feat: start processing functionality
+
+[33mcommit f35211d3e81f9b74414801977637e9533fa18d18[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 29 15:33:46 2024 +0530
+
+    feat: contact entity
+
+[33mcommit f4c8b194ae9680aade1f15fc277bc493b56be927[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 29 15:27:03 2024 +0530
+
+    feat: profile pic
+
+[33mcommit d69b68cc07ea6f965d5535556760eeee682777b3[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 29 14:42:30 2024 +0530
+
+    feat: add contact ui
+
+[33mcommit c26ab218e034ff38f15ccc4cdf51af0f2b2f9c6a[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Dec 27 22:25:09 2024 +0530
+
+    feat: goodnight
+
+[33mcommit 062973e0595fc62fbfb059bb41f6d7152ebaf90c[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Dec 27 22:13:24 2024 +0530
+
+    feat: dashboard and profile
+
+[33mcommit 6c5b35e4ab1d8e74831ccdce1731383ad0994213[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Dec 27 12:23:28 2024 +0530
+
+    feat: ui -> dope ui
+
+[33mcommit 691745beee97863500c10449f098c360fa46f84b[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Dec 27 10:59:21 2024 +0530
+
+    fix: conditional navbars
+
+[33mcommit 746220cd4c3f7505f1106608abc05dee15d48a42[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Dec 27 10:00:15 2024 +0530
+
+    feat: getting loggedin user details
+
+[33mcommit 0f7687240aaf664aed2297cc3eb3c3d635b04bd9[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Fri Dec 27 09:35:26 2024 +0530
+
+    chore
+
+[33mcommit d7bf2f612fd156e9400e197c876af0d2606d570d[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Dec 26 22:56:51 2024 +0530
+
+    feat: getting username
+
+[33mcommit 7a3f5e07cbcdbeee613a30e076522ce1c0ae615f[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Dec 26 20:52:36 2024 +0530
+
+    feat: finish github oauth
+
+[33mcommit a6807f7a7d213fe919ebb5ada923bccdf9ee26d1[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Dec 26 18:22:37 2024 +0530
+
+    feat: s2-save user to db, finish google oauth
+
+[33mcommit 29db3edc92d6c7a074371600e45dae1206508c01[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Dec 26 17:45:01 2024 +0530
+
+    feat: complete oauth s1
+
+[33mcommit a29568cdf5a2936b0a428727e140deaa39829545[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Thu Dec 26 17:34:14 2024 +0530
+
+    feat: oauth s1
+
+[33mcommit dcde69cf500db83317674cfac83907ac505b5f0d[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Dec 16 21:39:39 2024 +0530
+
+    build: oauth2 dependency
+
+[33mcommit 21866a4085975eee4e1222e386aa49311e6b8f3b[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Dec 16 17:51:34 2024 +0530
+
+    feat: finish login
+
+[33mcommit 18f30b454181f2d2552987b7bf58627d947e3aca[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Dec 16 17:37:27 2024 +0530
+
+    feat: complete login page functionality
+
+[33mcommit dbc4764517015d149a9a430a858664b50e72a182[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Mon Dec 16 17:30:22 2024 +0530
+
+    chore: login customization
+
+[33mcommit 7056e8e4277cd7a82b12d3a25f350e1451699b10[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 15 18:53:07 2024 +0530
+
+    feat: finish authorization, protect pages
+
+[33mcommit 736288df323ba87bb3271ba73ead205ae683672b[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 15 18:23:28 2024 +0530
+
+    feat: spring security database version
+
+[33mcommit 735b205ca6948e941ce8e17fe739e66266f2b6eb[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sun Dec 15 17:50:02 2024 +0530
+
+    feat: spring security in-memory
+
+[33mcommit 21441170587a9dfe01b88abbe6f57031613bf069[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sat Dec 14 18:57:46 2024 +0530
+
+    feat: spring security
+
+[33mcommit 1bfc64e00851b5a182402bcaa295221950f8f987[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sat Dec 14 18:47:55 2024 +0530
+
+    feat: boilerplate code
+
+[33mcommit a1c0e6fac58e21de944936b0a89cbcbf44357c65[m
+Author: Shivd131 <shivdeshpande131@gmail.com>
+Date:   Sat Dec 14 18:45:20 2024 +0530
+
+    feat: user views
+
+[33mcommit ba042e2534862051ff05665055f09c76e3dd20c1[m
+Author: Shivd131 <shivde

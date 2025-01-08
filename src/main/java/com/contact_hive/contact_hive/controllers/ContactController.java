@@ -150,4 +150,23 @@ public class ContactController {
         return "redirect:/user/contacts";
     }
 
+    @GetMapping("/view/{contactId}")
+    public String updateContactFormView(
+            @PathVariable("contactId") String contactId,
+            Model model) {
+        var contact = contactService.getById(contactId);
+
+        ContactForm contactForm = new ContactForm();
+        contactForm.setAddress(contact.getAddress());
+        contactForm.setDescription(contact.getDescription());
+        contactForm.setEmail(contact.getEmail());
+        contactForm.setFavorite(contact.isFavorite());
+        contactForm.setLinkedInLink(contact.getLinkedInLink());
+        contactForm.setName(contact.getName());
+        contactForm.setPhoneNumber(contact.getPhoneNumber());
+        contactForm.setWebsiteLink(contact.getWebsiteLink());
+        contactForm.setPicture(contact.getPicture());
+        model.addAttribute("contactForm", contactForm);
+        return "user/update_contact";
+    }
 }
