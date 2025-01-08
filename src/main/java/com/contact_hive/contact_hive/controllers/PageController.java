@@ -79,6 +79,7 @@ public class PageController {
         user.setAbout(userForm.getAbout());
         user.setPhoneNumber(userForm.getPhoneNumber());
         user.setProfilePic("https://upload.wikimedia.org/wikipedia/commons/1/1e/Default-avatar.jpg");
+        user.setEnabled(false);
         session.setAttribute("message", "registration successful");
         User savedUser = userService.saveUser(user);
         System.out.println(savedUser);
@@ -89,4 +90,5 @@ public class PageController {
         return "redirect:/register";
     }
 
+    
 }

@@ -65,6 +65,8 @@ public class SecurityConfig {
     private SecurityCustomUserDetailService securityCustomUserDetailService;
     @Autowired
     private OAuthAuthenticationSuccessHandler oAuthAuthenticationSuccessHandler;
+    @Autowired
+    private LoginFailureHandler loginFailureHandler;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -91,6 +93,7 @@ public class SecurityConfig {
                             .usernameParameter("email")
                             .passwordParameter("password")
                             .permitAll();
+                    formLogin.failureHandler(loginFailureHandler);
                 });
         httpSecurity.csrf(AbstractHttpConfigurer::disable);
         httpSecurity.logout(logoutForm -> {

@@ -52,7 +52,7 @@ public class User implements UserDetails {
 
     private String phoneNumber;
 
-    private boolean enabled = true;
+    private boolean enabled = false;
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
@@ -82,6 +82,11 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return this.email;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.enabled;
     }
 
     public void setPicture(String picture) {
