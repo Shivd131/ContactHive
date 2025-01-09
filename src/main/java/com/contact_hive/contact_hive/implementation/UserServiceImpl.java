@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.contact_hive.contact_hive.entities.User;
 import com.contact_hive.contact_hive.helpers.AppConstants;
+import com.contact_hive.contact_hive.helpers.Helper;
 import com.contact_hive.contact_hive.helpers.ResourceNotFoundException;
 import com.contact_hive.contact_hive.repositories.UserRepository;
+import com.contact_hive.contact_hive.services.EmailService;
 import com.contact_hive.contact_hive.services.UserService;
 
 @Service
@@ -24,6 +26,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EmailService emailService;
+
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
@@ -34,7 +40,12 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoleList(List.of(AppConstants.ROLE_USER));
         logger.info(user.getProvider().toString());
-        return userRepo.save(user);
+        String emailToken = UUID.randomUUID().toString();
+        String emailLink = Helper.getLinkForEmailVerification(emailToken);
+        user.setEmailToken(emailToken);
+        User u = userRepo.save(user);
+        emailService.sendEmail(u.getEmail(), "Verify Account: ContactHive", emailLink);
+        return u;
     }
 
     @Override
@@ -93,6 +104,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByEmail(String email) {
         return userRepo.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public Optional<User> getUserByToken(String token) {
+        return userRepo.findByEmailToken(token);
     }
 
 }

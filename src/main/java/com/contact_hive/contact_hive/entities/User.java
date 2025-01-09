@@ -93,4 +93,6 @@ public class User implements UserDetails {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setPicture'");
     }
+
+    private String emailToken;
 }

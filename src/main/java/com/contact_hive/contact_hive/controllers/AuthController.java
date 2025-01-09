@@ -1,20 +1,42 @@
-// package com.contact_hive.contact_hive.controllers;
+package com.contact_hive.contact_hive.controllers;
 
-// import org.springframework.stereotype.Controller;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-// @Controller
-// public class AuthController {
+import com.contact_hive.contact_hive.entities.User;
+import com.contact_hive.contact_hive.repositories.UserRepository;
+import com.contact_hive.contact_hive.services.UserService;
 
-//     @GetMapping("/login")
-//     public String showLoginPage() {
-//         return "login"; // This should match your login template name
-//     }
+@Controller
+@RequestMapping("/auth")
+public class AuthController {
 
-//     @PostMapping("/authenticate")
-//     public String processLogin() {
-//         // Spring Security will handle the authentication
-//         return "redirect:/user/dashboard";
-//     }
-// }
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserRepository userRepo;
+
+    @GetMapping("/verify-email")
+    public String verifyEmail(
+            @RequestParam("token") String token) {
+
+        User user = userService.getUserByToken(token).orElse(null);
+
+        if (user != null) {
+            if (user.getEmailToken().equals(token)) {
+
+                user.setEmailVerified(true);
+                user.setEnabled(true);
+                userRepo.save(user);
+                return "success_page";
+            }
+        }
+
+        return "error_page";
+    }
+}
