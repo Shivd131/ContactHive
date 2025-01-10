@@ -16,50 +16,73 @@
             class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
           >
             <div class="p-4 sm:p-6 space-y-4">
-              <form
-                data-th-action="@{/user/contacts/search}"
-                data-th-object="${contactSearchForm}"
-                class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6"
-              >
-                <div class="space-y-4">
-                  <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <div class="w-full sm:w-1/3">
-                      <label
-                        for="search-field"
-                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                        >Search by</label
-                      >
-                      <select
-                        id="search-field"
-                        data-th-field="*{field}"
-                        name="field"
-                        class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition-colors duration-200"
-                      >
-                        <option value="">Select a field</option>
-                        <option value="name">Name</option>
-                        <option value="email">Email</option>
-                        <option value="phone">Phone Number</option>
-                      </select>
+              <div class="flex justify-between items-center">
+                <form
+                  data-th-action="@{/user/contacts/search}"
+                  data-th-object="${contactSearchForm}"
+                  class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6"
+                >
+                  <div class="space-y-4">
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                      <div class="w-full sm:w-1/3">
+                        <label
+                          for="search-field"
+                          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                          >Search by</label
+                        >
+                        <select
+                          id="search-field"
+                          data-th-field="*{field}"
+                          name="field"
+                          class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition-colors duration-200"
+                        >
+                          <option value="">Select a field</option>
+                          <option value="name">Name</option>
+                          <option value="email">Email</option>
+                          <option value="phone">Phone Number</option>
+                        </select>
+                      </div>
+                      <div class="w-full sm:w-2/3 relative">
+                        <label
+                          for="search-value"
+                          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                          >Search term</label
+                        >
+                        <input
+                          id="search-value"
+                          data-th-field="*{value}"
+                          name="keyword"
+                          type="text"
+                          class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition-colors duration-200"
+                          placeholder="Enter search term..."
+                        />
+                        <div
+                          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none mt-6"
+                        >
+                          <svg
+                            class="w-5 h-5 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                    <div class="w-full sm:w-2/3 relative">
-                      <label
-                        for="search-value"
-                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
-                        >Search term</label
-                      >
-                      <input
-                        id="search-value"
-                        data-th-field="*{value}"
-                        name="keyword"
-                        type="text"
-                        class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 transition-colors duration-200"
-                        placeholder="Enter search term..."
-                      />
-                      <div
-                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none mt-6"
+                    <div class="flex justify-end">
+                      <button
+                        type="submit"
+                        class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                       >
                         <svg
-                          class="w-5 h-5 text-gray-400"
+                          class="w-5 h-5 mr-2"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -72,33 +95,47 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                           ></path>
                         </svg>
-                      </div>
+                        Search Contacts
+                      </button>
                     </div>
                   </div>
-                  <div class="flex justify-end">
+                </form>
+                <div>
+                  <div>
                     <button
-                      type="submit"
+                      id="exportButton"
+                      type="button"
                       class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200"
                     >
-                      <svg
-                        class="w-5 h-5 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        ></path>
-                      </svg>
-                      Search Contacts
+                      <span id="exportButtonText">Export</span>
+                      <span id="exportSpinner" class="hidden ml-2">
+                        <!-- Loading spinner SVG -->
+                        <svg
+                          class="animate-spin h-5 w-5 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            class="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="4"
+                          ></circle>
+                          <path
+                            class="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                      </span>
                     </button>
                   </div>
                 </div>
-              </form>
+              </div>
+
               <div data-th-if="${pageContact.content.size() == 0}" class="p-6">
                 <div
                   class="flex items-center justify-center space-x-2 text-gray-500 dark:text-gray-400"
@@ -111,6 +148,7 @@
                 class="overflow-x-auto items-center flex-col"
               >
                 <table
+                  id="contacts-table"
                   class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
                 >
                   <thead
@@ -385,6 +423,81 @@
     <div th:fragment="scripts" defer>
       <script defer>
         console.log("sdf");
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const exportButton = document.getElementById("exportButton");
+          const exportSpinner = document.getElementById("exportSpinner");
+          const exportButtonText = document.getElementById("exportButtonText");
+
+          if (exportButton) {
+            exportButton.addEventListener("click", async function () {
+              try {
+                //loading state
+                exportButton.disabled = true;
+                exportSpinner.classList.remove("hidden");
+                exportButtonText.textContent = "Exporting...";
+
+                // Fetch contacts
+                const response = await fetch("/user/contacts/export");
+                if (!response.ok) throw new Error("Failed to fetch contacts");
+                const contacts = await response.json();
+
+                const worksheetData = [
+                  [
+                    "Name",
+                    "Profile link",
+                    "Email",
+                    "Phone Number",
+                    "Website",
+                    "LinkedIn",
+                    "Address",
+                    "Description",
+                    "Favorite",
+                  ],
+                  ...contacts.map((contact) => [
+                    contact.name,
+                    contact.picture,
+                    contact.email,
+                    contact.phoneNumber,
+                    contact.websiteLink,
+                    contact.linkedInLink,
+                    contact.address,
+                    contact.description,
+                    contact.favorite ? "Yes" : "No",
+                  ]),
+                ];
+
+                // Create a temporary table for export
+                const tempTable = document.createElement("table");
+                tempTable.style.display = "none";
+
+                worksheetData.forEach((rowData) => {
+                  const row = tempTable.insertRow();
+                  rowData.forEach((cellData) => {
+                    const cell = row.insertCell();
+                    cell.textContent = cellData || ""; // Handle null/undefined values
+                  });
+                });
+
+                TableToExcel.convert(tempTable, {
+                  name: `contacts_export_${new Date().toLocaleDateString()}.xlsx`,
+                  sheet: {
+                    name: "All Contacts",
+                  },
+                });
+              } catch (error) {
+                console.error("Export failed:", error);
+                alert("Failed to export contacts. Please try again.");
+              } finally {
+                exportButton.disabled = false;
+                exportSpinner.classList.add("hidden");
+                exportButtonText.textContent = "Export";
+              }
+            });
+          }
+        });
       </script>
 
       <script th:src="@{'/js/contacts.js'}" defer></script>
