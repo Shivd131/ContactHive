@@ -84,6 +84,10 @@ public class User implements UserDetails {
         return this.email;
     }
 
+    public String getUserId() {
+        return this.userId;
+    }
+
     @Override
     public boolean isEnabled() {
         return this.enabled;

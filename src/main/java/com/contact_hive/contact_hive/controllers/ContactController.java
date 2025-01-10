@@ -211,7 +211,10 @@ public class ContactController {
     }
 
     @GetMapping("export")
-    public ResponseEntity<List<Contact>> getAllContacts() {
-        return ResponseEntity.ok(contactService.getAll());
+    public ResponseEntity<List<Contact>> getAllContacts(Authentication authentication) {
+        String username = Helper.getEmailOfLoggedInUser(authentication);
+        User user = userService.getUserByEmail(username);
+        return ResponseEntity.ok(contactService.getByUserId(user.getUserId()));
     }
+
 }
