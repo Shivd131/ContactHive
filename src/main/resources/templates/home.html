@@ -5,9 +5,418 @@
   th:replace="~{base :: parent(~{::#content}, 'ContactHive | Home')}"
 >
   <head></head>
-  <body>
-    <div id="content">
-      <h1>Welcome to the Home Page</h1>
+  <body
+    class="bg-gradient-to-b from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800"
+  >
+    <div id="content" class="min-h-screen">
+      <header
+        class="bg-blue-600 dark:bg-blue-800 text-white py-12 relative overflow-hidden"
+      >
+        <div class="container mx-auto px-4 relative z-10">
+          <h1 class="text-5xl font-bold mb-2 animate-fade-in-up">
+            Welcome to ContactHive
+          </h1>
+          <p
+            class="text-2xl text-blue-100 animate-fade-in-up animation-delay-300"
+          >
+            Where Your Connections Flourish
+          </p>
+        </div>
+        <div class="absolute inset-0 overflow-hidden">
+          <svg
+            class="absolute bottom-0 left-0 w-full h-64"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="rgba(255,255,255,0.1)"
+              fill-opacity="1"
+              d="M0,32L48,80C96,128,192,224,288,224C384,224,480,128,576,90.7C672,53,768,75,864,96C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
+      </header>
+
+      <main class="container mx-auto px-4 py-12">
+        <section class="mb-16 relative">
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            Our Story
+          </h2>
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 animate-fade-in-left">
+              <p class="text-xl mb-6 text-gray-600 dark:text-gray-300">
+                Just as bees work tirelessly to build and maintain their hives,
+                we at ContactHive are dedicated to helping you nurture and
+                organize your network of connections.
+              </p>
+              <p class="text-xl text-gray-600 dark:text-gray-300">
+                Founded with the vision of simplifying contact management,
+                ContactHive has grown into a buzzing ecosystem of features
+                designed to keep your professional and personal relationships
+                thriving.
+              </p>
+            </div>
+            <div class="md:w-1/2 relative animate-fade-in-right">
+              <div class="relative w-full h-80">
+                <!-- Hexagon pattern background -->
+                <div class="absolute inset-0 opacity-30 dark:opacity-20">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100%"
+                    height="100%"
+                  >
+                    <defs>
+                      <pattern
+                        id="hexagons"
+                        width="50"
+                        height="43.4"
+                        patternUnits="userSpaceOnUse"
+                        patternTransform="scale(2)"
+                      >
+                        <polygon
+                          points="24.8,22 37.3,29.2 37.3,43.7 24.8,50.9 12.3,43.7 12.3,29.2"
+                          fill="#3B82F6"
+                        />
+                        <polygon
+                          points="24.8,22 37.3,14.8 37.3,0.3 24.8,-6.9 12.3,0.3 12.3,14.8"
+                          fill="#3B82F6"
+                        />
+                        <polygon
+                          points="0,43.3 12.5,50.5 12.5,65 0,72.2 -12.5,65 -12.5,50.5"
+                          fill="#3B82F6"
+                        />
+                        <polygon
+                          points="49.7,43.3 62.2,50.5 62.2,65 49.7,72.2 37.2,65 37.2,50.5"
+                          fill="#3B82F6"
+                        />
+                      </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#hexagons)" />
+                  </svg>
+                </div>
+
+                <!-- Hexagon-shaped image -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-64 h-64 relative">
+                    <svg
+                      viewBox="0 0 100 100"
+                      width="100%"
+                      height="100%"
+                      preserveAspectRatio="none"
+                    >
+                      <defs>
+                        <clipPath id="hexClip">
+                          <path d="M50 0 L93.3 25 V75 L50 100 L6.7 75 V25 Z" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mb-16" x-data="{ currentFeature: 0 }">
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            Key Features
+          </h2>
+          <div
+            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 relative overflow-hidden"
+          >
+            <div class="flex justify-between mb-6">
+              <button
+                @click="currentFeature = (currentFeature - 1 + 4) % 4"
+                class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+              <button
+                @click="currentFeature = (currentFeature + 1) % 4"
+                class="text-blue-600 hover:text-blue-800 dark:text-blue-400 z-20 dark:hover:text-blue-300 transition-colors duration-300"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="text-center">
+              <div
+                x-show="currentFeature === 0"
+                class="text-gray-800 dark:text-white animate-fade-in"
+              >
+                <h3 class="text-3xl font-semibold mb-4">
+                  Intuitive Organization
+                </h3>
+                <p class="text-xl text-gray-600 dark:text-gray-300">
+                  Effortlessly categorize and manage your contacts like a
+                  well-structured beehive.
+                </p>
+              </div>
+              <div
+                x-show="currentFeature === 1"
+                class="text-gray-800 dark:text-white animate-fade-in"
+              >
+                <h3 class="text-3xl font-semibold mb-4">Smart Search</h3>
+                <p class="text-xl text-gray-600 dark:text-gray-300">
+                  Find any contact in seconds, just like a bee locating the
+                  sweetest flower in the field.
+                </p>
+              </div>
+              <div
+                x-show="currentFeature === 2"
+                class="text-gray-800 dark:text-white animate-fade-in"
+              >
+                <h3 class="text-3xl font-semibold mb-4">
+                  Seamless Integration
+                </h3>
+                <p class="text-xl text-gray-600 dark:text-gray-300">
+                  Connect ContactHive with your favorite tools, creating a
+                  harmonious ecosystem.
+                </p>
+              </div>
+              <div
+                x-show="currentFeature === 3"
+                class="text-gray-800 dark:text-white animate-fade-in"
+              >
+                <h3 class="text-3xl font-semibold mb-4">Secure Storage</h3>
+                <p class="text-xl text-gray-600 dark:text-gray-300">
+                  Keep your contacts safe and protected, like bees guarding
+                  their precious honey.
+                </p>
+              </div>
+            </div>
+            <svg
+              class="absolute bottom-0 right-16 w-64 h-64 text-blue-100 dark:text-blue-900 opacity-20 transform rotate-45"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+            >
+              <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 50 50"
+                  to="360 50 50"
+                  dur="20s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </svg>
+          </div>
+        </section>
+
+        <section class="mb-16">
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            The ContactHive Analogy
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-blue-600 dark:text-blue-400 mb-6 animate-float"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                />
+              </svg>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                The Hive
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Your ContactHive account is like a beehive, a central hub for
+                all your connections.
+              </p>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-150"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-blue-600 dark:text-blue-400 mb-6 animate-float animation-delay-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                The Bees
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Your contacts are like busy bees, each playing a unique role in
+                your network.
+              </p>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-blue-600 dark:text-blue-400 mb-6 animate-float animation-delay-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+                />
+              </svg>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                The Honey
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                The valuable information and interactions you store are the
+                sweet honey of your network.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            Join the Hive
+          </h2>
+          <div
+            class="bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 rounded-lg shadow-lg p-8 relative overflow-hidden"
+          >
+            <p class="text-2xl mb-6 text-white">
+              Ready to transform the way you manage your contacts? Join
+              ContactHive today and experience the buzz of efficient networking!
+            </p>
+            <a
+              href="/register"
+              class="inline-block bg-white text-blue-600 dark:bg-gray-800 dark:text-blue-400 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 animate-pulse"
+            >
+              Get Started
+            </a>
+            <svg
+              class="absolute top-0 right-0 w-32 h-32 text-blue-400 opacity-20 transform rotate-45"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+            >
+              <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 50 50"
+                  to="360 50 50"
+                  dur="20s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </svg>
+          </div>
+        </section>
+      </main>
     </div>
+
+    <style>
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .animate-float {
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.6s ease-out forwards;
+      }
+      .animation-delay-150 {
+        animation-delay: 150ms;
+      }
+      .animation-delay-300 {
+        animation-delay: 300ms;
+      }
+      .animation-delay-600 {
+        animation-delay: 600ms;
+      }
+      @keyframes blob {
+        0%,
+        100% {
+          border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        25% {
+          border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        }
+        50% {
+          border-radius: 50% 60% 30% 60% / 30% 70% 50% 40%;
+        }
+        75% {
+          border-radius: 40% 30% 70% 50% / 60% 40% 60% 30%;
+        }
+      }
+      .animate-blob {
+        animation: blob 20s infinite;
+      }
+    </style>
   </body>
 </html>

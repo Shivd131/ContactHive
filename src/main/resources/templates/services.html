@@ -6,8 +6,273 @@
 >
   <head></head>
   <body>
-    <div id="content">
-      <h1>Welcome to the Services Page</h1>
+    <div id="content" class="min-h-screen">
+      <header
+        class="bg-blue-600 dark:bg-blue-800 text-white py-12 relative overflow-hidden"
+      >
+        <div class="container mx-auto px-4 relative z-10">
+          <h1 class="text-5xl font-bold mb-2 animate-fade-in-up">
+            Our Services
+          </h1>
+          <p
+            class="text-2xl text-blue-100 animate-fade-in-up animation-delay-300"
+          >
+            Empowering Your Connections
+          </p>
+        </div>
+        <div class="absolute inset-0 overflow-hidden">
+          <svg
+            class="absolute bottom-0 left-0 w-full h-64"
+            viewBox="0 0 1440 320"
+            preserveAspectRatio="none"
+          >
+            <path
+              fill="rgba(255,255,255,0.1)"
+              fill-opacity="1"
+              d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,112C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            ></path>
+          </svg>
+        </div>
+      </header>
+
+      <main class="container mx-auto px-4 py-12">
+        <section class="mb-16">
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            Core Services
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-blue-600 dark:text-blue-400 mb-6 animate-float"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                />
+              </svg>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                Contact Management
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Effortlessly organize and manage your contacts with our
+                intuitive interface and powerful tools.
+              </p>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-150"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-blue-600 dark:text-blue-400 mb-6 animate-float animation-delay-300"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                Smart Search
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Find any contact instantly with our advanced search
+                capabilities, saving you time and effort.
+              </p>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 transform hover:scale-105 transition-all duration-300 animate-fade-in-up animation-delay-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-blue-600 dark:text-blue-400 mb-6 animate-float animation-delay-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                />
+              </svg>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                Custom Categories
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Create personalized categories to organize your contacts in a
+                way that makes sense for you.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="mb-16">
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            How It Works
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 relative overflow-hidden animate-fade-in-up"
+            >
+              <div
+                class="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-4"
+              >
+                1
+              </div>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                Sign Up
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Create your ContactHive account and set up your profile.
+              </p>
+              <svg
+                class="absolute bottom-0 right-0 w-24 h-24 text-blue-100 dark:text-blue-900 opacity-20"
+                fill="currentColor"
+                viewBox="0 0 100 100"
+              >
+                <circle cx="50" cy="50" r="40">
+                  <animateTransform
+                    attributeName="transform"
+                    type="scale"
+                    from="1"
+                    to="1.2"
+                    dur="4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+              </svg>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 relative overflow-hidden animate-fade-in-up animation-delay-150"
+            >
+              <div
+                class="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-4"
+              >
+                2
+              </div>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                Add Contacts
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Add new contacts.
+              </p>
+              <svg
+                class="absolute bottom-0 right-0 w-24 h-24 text-blue-100 dark:text-blue-900 opacity-20"
+                fill="currentColor"
+                viewBox="0 0 100 100"
+              >
+                <rect width="60" height="60" x="20" y="20">
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 50 50"
+                    to="360 50 50"
+                    dur="10s"
+                    repeatCount="indefinite"
+                  />
+                </rect>
+              </svg>
+            </div>
+            <div
+              class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 relative overflow-hidden animate-fade-in-up animation-delay-300"
+            >
+              <div
+                class="text-5xl font-bold text-blue-600 dark:text-blue-400 mb-4"
+              >
+                3
+              </div>
+              <h3
+                class="text-2xl font-semibold mb-4 text-gray-800 dark:text-white"
+              >
+                Organize & Grow
+              </h3>
+              <p class="text-lg text-gray-600 dark:text-gray-300">
+                Manage your contacts, set reminders, and expand your network
+                effortlessly.
+              </p>
+              <svg
+                class="absolute bottom-0 right-0 w-24 h-24 text-blue-100 dark:text-blue-900 opacity-20"
+                fill="currentColor"
+                viewBox="0 0 100 100"
+              >
+                <polygon points="50,15 100,100 0,100">
+                  <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 50 50"
+                    to="360 50 50"
+                    dur="8s"
+                    repeatCount="indefinite"
+                  />
+                </polygon>
+              </svg>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2
+            class="text-4xl font-semibold mb-8 text-gray-800 dark:text-white animate-fade-in-up"
+          >
+            Ready to Get Started?
+          </h2>
+          <div
+            class="bg-gradient-to-r from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700 rounded-lg shadow-lg p-8 relative overflow-hidden"
+          >
+            <p class="text-2xl mb-6 text-white">
+              Experience the power of efficient contact management with
+              ContactHive. Start your journey today!
+            </p>
+            <a
+              href="/register"
+              class="inline-block bg-white text-blue-600 dark:bg-gray-800 dark:text-blue-400 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 animate-pulse"
+            >
+              Get Started Now
+            </a>
+            <svg
+              class="absolute top-0 right-0 w-32 h-32 text-blue-400 opacity-20 transform rotate-45"
+              fill="currentColor"
+              viewBox="0 0 100 100"
+            >
+              <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z">
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 50 50"
+                  to="360 50 50"
+                  dur="20s"
+                  repeatCount="indefinite"
+                />
+              </path>
+            </svg>
+          </div>
+        </section>
+      </main>
     </div>
   </body>
 </html>
