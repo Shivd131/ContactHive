@@ -34,6 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
+        if (isUserExistByEmail(user.getEmail())) {
+            throw new IllegalArgumentException("A user with this email already exists.");
+        }
 
         String userId = UUID.randomUUID().toString();
         user.setUserId(userId);

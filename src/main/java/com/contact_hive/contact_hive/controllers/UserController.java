@@ -1,21 +1,21 @@
 package com.contact_hive.contact_hive.controllers;
 
 // import org.hibernate.validator.internal.util.logging.LoggerFactory; // Removed duplicate import
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.contact_hive.contact_hive.services.UserService;
+// import com.contact_hive.contact_hive.services.UserService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    private Logger logger = LoggerFactory.getLogger(UserController.class);
-    @Autowired
-    private UserService userService;
+    // private Logger logger = LoggerFactory.getLogger(UserController.class);
+    // @Autowired
+    // private UserService userService;
 
     // user dashboard page
     @GetMapping("/dashboard")

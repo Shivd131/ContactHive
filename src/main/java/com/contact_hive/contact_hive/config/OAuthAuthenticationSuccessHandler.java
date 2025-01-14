@@ -14,7 +14,6 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-import com.contact_hive.contact_hive.entities.Providers;
 import com.contact_hive.contact_hive.entities.User;
 import com.contact_hive.contact_hive.helpers.AppConstants;
 import com.contact_hive.contact_hive.repositories.UserRepository;
