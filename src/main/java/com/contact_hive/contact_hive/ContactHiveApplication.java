@@ -10,3 +10,4 @@ public class ContactHiveApplication {
 		SpringApplication.run(ContactHiveApplication.class, args);
 	}
 }
+
