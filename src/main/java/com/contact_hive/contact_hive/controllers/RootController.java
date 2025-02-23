@@ -24,12 +24,21 @@ public class RootController {
     @ModelAttribute
     public void addLoggedInUserToModel(Model model, Authentication authentication) {
         if (authentication == null) {
+            System.out.println("Authentication object is null. User is not logged in.");
             return;
         }
-        System.out.println("Inside addLoggedInUserToModel");
+
         String username = Helper.getEmailOfLoggedInUser(authentication);
+        System.out.println("Retrieved username from authentication: " + username);
+
         User user = userService.getUserByEmail(username);
-        System.out.println(user.getEmail());
+        if (user == null) {
+            System.out.println("No user found with email: " + username);
+            model.addAttribute("loggedInUser", null);
+            return;
+        }
+
+        System.out.println("Logged-in user email: " + user.getEmail());
         model.addAttribute("loggedInUser", user);
     }
 

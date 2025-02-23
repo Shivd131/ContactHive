@@ -1,5 +1,5 @@
 console.log("Contacts.js");
-const baseURL = "http://ec2-65-0-251-247.ap-south-1.compute.amazonaws.com:8081";
+const baseURL = "http://localhost:8081";
 const viewContactModal = document.getElementById("default-modal");
 
 // options with default values
