@@ -1,5 +1,5 @@
 console.log("Contacts.js");
-const baseURL = "http://localhost:8081";
+const baseURL = "https://contacthive.onrender.com";
 const viewContactModal = document.getElementById("default-modal");
 
 // options with default values
